@@ -19,5 +19,7 @@
         "search-insights"
       ]
     }
-  }
+  },
+
+  "packageManager": "^pnpm@8.9.0"
 }
