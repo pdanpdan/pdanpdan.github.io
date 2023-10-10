@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "PDanPDan"
-  text: "PDanPDan"
+  text: "PDanPDan code and examples for web"
   tagline: My great project tagline
   actions:
     - theme: brand
