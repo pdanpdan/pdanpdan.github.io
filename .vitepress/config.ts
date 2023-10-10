@@ -4,6 +4,9 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "PDanPDan",
   description: "PDanPDan code and examples for web",
+
+  srcDir: 'pages',
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
 
