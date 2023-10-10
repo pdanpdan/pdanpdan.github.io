@@ -3,6 +3,8 @@ import { h } from 'vue'
 import Theme from 'vitepress/theme'
 import './style.css'
 
+import { AntdTheme } from 'vite-plugin-vitepress-demo/theme'
+
 export default {
   extends: Theme,
   Layout: () => {
@@ -11,6 +13,6 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
-    // ...
+    app.component( 'Demo', AntdTheme )
   }
 }
