@@ -2,6 +2,8 @@
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
+title: "Home Page"
+
 hero:
   name: "PDanPDan"
   text: "PDanPDan code and examples for web"

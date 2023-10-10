@@ -4,7 +4,8 @@ import VitePluginVitepressDemo from 'vite-plugin-vitepress-demo'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "PDanPDan",
+  lang: 'en-US',
+  titleTemplate: ':title | PDanPDan',
   description: "PDanPDan code and examples for web",
 
   srcDir: 'pages',
@@ -40,6 +41,16 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/pdanpdan' }
     ]
+  },
+
+  sitemap: {
+    hostname: 'https://pdanpdan.github.io/'
+  },
+
+  lastUpdated: true,
+
+  markdown: {
+    lineNumbers: true
   },
 
   vite: {
