@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "paths": {
+      "assets/*": ["assets/*"],
+      "components/*": ["components/*"],
+      "pages/*": ["pages/*"],
+      "theme/*": [".vitepress/theme/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    ".vitepress/dist",
+    ".vitepress/cache",
+    "public"
+  ],
+  "include": [
+    ".vitepress/config.js",
+    "**/*"
+  ]
+}

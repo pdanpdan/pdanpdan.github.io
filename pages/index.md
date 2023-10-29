@@ -2,26 +2,27 @@
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
-title: "Home Page"
+title: Home Page
 
 hero:
-  name: "PDanPDan"
-  text: "PDanPDan code and examples for web"
-  tagline: My great project tagline
+  name: PDanPDan
+  tagline: Web develoment tips & tricks
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples/
+      text: My Projects
+      link: /my-projects/
     - theme: alt
-      text: API Examples
-      link: /api-examples/
+      text: Posts
+      link: /posts/
+    - theme: alt
+      text: About
+      link: /about/
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Quasar
+    details: Hint and examples for using Quasar Framework. Get the best results with minimal effort.
+  - title: CSS
+    details: How to get what you want with CSS. There is nothing to be scared of.
+  - title: Backend
+    details: Backend / API related information. Don't mix frontend and backend to have an easy life.
 ---
-

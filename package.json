@@ -1,14 +1,25 @@
 {
   "type": "module",
   "scripts": {
-    "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "lint": "eslint --ext .js,.vue,.md ./"
+  },
+  "dependencies": {
+    "vue": "^3.3.7"
   },
   "devDependencies": {
+    "@vue/eslint-config-airbnb": "^7.0.0",
+    "eslint": "^8.52.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-markdown": "^3.0.1",
+    "eslint-plugin-vue": "^9.18.1",
+    "postcss": "^8.4.31",
+    "sass": "^1.69.5",
     "vite-plugin-vitepress-demo": "^2.1.0",
-    "vitepress": "^1.0.0-rc.20",
-    "vue": "^3.3.4"
+    "vitepress": "1.0.0-rc.24"
   },
   "pnpm": {
     "peerDependencyRules": {

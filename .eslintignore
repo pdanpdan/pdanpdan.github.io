@@ -1,0 +1,6 @@
+/.github
+/node_modules
+/.vitepress/dist
+/.vitepress/cache
+/assets
+/public

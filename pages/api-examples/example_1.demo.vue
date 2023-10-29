@@ -12,7 +12,7 @@ Hello World This is Test Docs block code in `docs.vue`.
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const msg = ref('Hello World')
+const msg = ref('Hello World');
 </script>
