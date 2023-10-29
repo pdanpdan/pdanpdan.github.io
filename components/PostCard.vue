@@ -12,7 +12,7 @@
 
       <div class="details">
         <div class="article">
-          <h1 class="title">{{ title }}</h1>
+          <h2 class="title">{{ title }}</h2>
           <p v-if="excerpt" class="excerpt">{{ excerpt }}</p>
         </div>
 
