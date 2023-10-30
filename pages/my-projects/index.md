@@ -39,13 +39,15 @@ If you need extended support / features / fixes for Quasar v1 please contact me 
 * in your `package.json` file add a key `quasar` inside `dependencies` section (or replace the existing one) with the value `"https://github.com/pdanpdan/quasar#quasar-pdan-v1.22.10-beta.3`
   * replace the version number with the latest one from the [releases page](https://github.com/pdanpdan/quasar/releases)
   * the versions are based on the official Quasar v1 releases, and the `-beta.X` is the internal release number for each official version number
-```json
-  "dependencies": {
-    ...
-    "quasar": "https://github.com/pdanpdan/quasar#quasar-pdan-v1.22.10-beta.3", // [!code focus]
-    ...
-  }
+
+```json {3}
+"dependencies": {
+  ...
+  "quasar": "https://github.com/pdanpdan/quasar#quasar-pdan-v1.22.10-beta.3", // [!code focus]
+  ...
+}
 ```
+
 * reinstall the packages (`yarn cache clean --pattern quasar && yarn` / `pnpm i`)
 * no other changes are required
 

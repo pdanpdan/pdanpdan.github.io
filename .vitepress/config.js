@@ -1,7 +1,7 @@
-import { defineConfig } from 'vitepress'
-import { resolve } from 'node:path'
+import { defineConfig } from 'vitepress';
+import { resolve } from 'node:path';
 
-import VitePluginVitepressDemo from 'vite-plugin-vitepress-demo'
+import VitePluginVitepressDemo from 'vite-plugin-vitepress-demo';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -19,9 +19,9 @@ export default defineConfig({
       options: {
         miniSearch: {
           options: {},
-          searchOptions: {}
-        }
-      }
+          searchOptions: {},
+        },
+      },
     },
 
     nav: [
@@ -31,27 +31,28 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/pdanpdan' }
-    ]
+      { icon: 'github', link: 'https://github.com/pdanpdan' },
+    ],
   },
 
   sitemap: {
-    hostname: 'https://pdanpdan.github.io/'
+    hostname: 'https://pdanpdan.github.io/',
   },
 
   lastUpdated: true,
 
   markdown: {
-    lineNumbers: true
+    lineNumbers: true,
   },
 
   vite: {
     publicDir: './public',
     plugins: [
-      VitePluginVitepressDemo( {
+      VitePluginVitepressDemo({
         glob: [
-          '**/*.demo.vue'
-        ]
+          '**/*.demo.vue',
+        ],
+        wrapper: 'demo-block',
       }),
     ],
     resolve: {
@@ -60,7 +61,7 @@ export default defineConfig({
         components: resolve(__dirname, '../components'),
         pages: resolve(__dirname, '../pages'),
         theme: resolve(__dirname, './theme'),
-      }
-    }
-  }
-})
+      },
+    },
+  },
+});

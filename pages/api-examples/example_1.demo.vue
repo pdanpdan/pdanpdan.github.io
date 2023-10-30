@@ -4,7 +4,6 @@ title: Test Title 1
 ---
 
 Hello World This is Test Docs block code in `docs.vue`.
-
 </docs>
 
 <template>

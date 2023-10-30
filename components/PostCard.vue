@@ -2,30 +2,35 @@
   <a class="card" :href="href">
     <script-tag :meta="meta" />
 
-    <article class="content">
+    <article>
       <img
-        v-if="image"
-        class="media"
+        v-if="imageSrc"
+        class="thumbnail"
         :src="imageSrc"
         :alt="title"
       />
 
-      <div class="details">
-        <div class="article">
+      <div class="main">
+        <section class="content">
           <h2 class="title">{{ title }}</h2>
           <p v-if="excerpt" class="excerpt">{{ excerpt }}</p>
-        </div>
+        </section>
 
-        <div class="author">
-          <template v-if="author">
-            by
-            <address v-text="author" />
-          </template>
-          <template v-if="date.iso">
-            @
-            <time pubdate :datetime="date.iso" v-text="date.pretty" />
-          </template>
-        </div>
+        <section class="info">
+          <div class="tags">
+            <span v-for="tag in tags" :key="tag" v-text="tag" />
+          </div>
+
+          <div class="meta">
+            <div v-if="author">
+              by
+              <address v-text="author" />
+            </div>
+            <div v-if="date.iso">
+              <time pubdate :datetime="date.iso" v-text="date.pretty" />
+            </div>
+          </div>
+        </section>
       </div>
     </article>
   </a>
@@ -35,6 +40,8 @@
 import { withBase } from 'vitepress';
 
 import ScriptTag from 'components/ScriptTag.vue';
+
+const images = import.meta.glob('pages/posts/*.{jpg,png}', { eager: true, as: 'url' });
 
 export default {
   props: {
@@ -62,9 +69,8 @@ export default {
       type: String,
       default: null,
     },
-
-    images: {
-      type: Object,
+    tags: {
+      type: Array,
       default: null,
     },
   },
@@ -90,9 +96,13 @@ export default {
     },
 
     imageSrc() {
-      const key = `./${this.image.split('/').slice(-1)[0]}`;
-
-      return withBase(this.images[key] || this.image);
+      if (images[`${ this.image }.jpg`]) {
+        return withBase(images[`${ this.image }.jpg`]);
+      }
+      if (images[`${ this.image }.png`]) {
+        return withBase(images[`${ this.image }.png`]);
+      }
+      return null;
     },
   },
 };
@@ -104,52 +114,84 @@ export default {
   width: 100%
 
   + .card
-    margin-top: 1.5rem
+    margin-top: 2rem
 
-.content
+article
   display: flex
-  border-radius: 0.5em
   overflow: hidden
-  background: var(--vp-c-bg-soft)
+  border-radius: 0.5em
+  border: 1px solid var(--vp-c-border)
+  background-color: var(--vp-c-bg-alt)
   box-shadow: var(--vp-shadow-1)
-  transition: 0.25s box-shadow
+  transition: box-shadow 0.25s, background-color 0.25s
 
   &:hover
+    background-color: var(--vp-c-bg-elv)
     box-shadow: var(--vp-shadow-2)
 
   @media (max-width: 960px)
     flex-direction: column
 
-.media
+.thumbnail
   max-width: 45%
   max-height: 200px
   aspect-ratio: 16/9
   object-fit: cover
+  order: 1
 
   @media (max-width: 960px)
     max-width: 100%
 
-.details
-  padding: 1em 2em
+  @media (min-width: 961px)
+    margin-inline: 0 1em
+
+    .card:nth-of-type(2n) &
+      order: 2
+      margin-inline: 1em 0
+
+.main
+  padding: 1em
   flex-grow: 1
+  order: 1
   display: flex
   flex-direction: column
 
   @media (max-width: 960px)
-    padding: 2em 2em 1em 2em
+    padding: 2em 1em 1em 1em
 
-.article
+.content
   flex-grow: 1
 
-.title
+h2
   color: var(--vp-c-brand)
   font-size: 1.2em
   font-weight: bold
 
-.author
-  text-align: end
+.info
+  display: flex
+  align-items: flex-end
+  flex-wrap: nowrap
+  padding-block-start: 1.5em
+
+.tags
+  flex-grow: 1
+  display: flex
+  gap: 0.4em
+  padding-inline-end: 1em
+
+  span
+    font-size: 0.9em
+    border-radius: 0.8em
+    padding: 0.1em 0.8em
+    font-family: var(--vp-font-family-mono)
+    color: var(--vp-badge-info-text)
+    background-color: var(--vp-badge-info-bg)
+
+.meta
   font-size: 0.7em
   color: var(--vp-c-text-3)
+  text-align: end
+  line-height: 1.5
 
 address
   display: inline
