@@ -3,7 +3,7 @@ import { h } from 'vue';
 import Theme from 'vitepress/theme-without-fonts';
 import './style.sass';
 
-import { AntdTheme } from 'vite-plugin-vitepress-demo/theme';
+import DemoBlock from 'components/CodeBlock/index.vue';
 
 export default {
   extends: Theme,
@@ -11,6 +11,6 @@ export default {
     // https://vitepress.dev/guide/extending-default-theme#layout-slots
   }),
   enhanceApp({ app /* , router, siteData */ }) {
-    app.component('DemoBlock', AntdTheme);
+    app.component('DemoBlock', DemoBlock);
   },
 };
