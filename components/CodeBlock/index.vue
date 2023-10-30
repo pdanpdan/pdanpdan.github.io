@@ -72,8 +72,8 @@ const sfcPlaygroundUrl = computed(() => {
 </script>
 
 <template>
-  <fieldset v-if="!raw" class="demo-block" :class="{ 'demo-block--active': hash === titleId }">
-    <legend v-if="content?.title || title" class="demo-block__title">
+  <article v-if="!raw" class="demo-block" :class="{ 'demo-block--active': hash === titleId }">
+    <section v-if="content?.title || title" class="demo-block__title">
       <h6 :id="titleId">
         {{ content?.title ?? title }}
         <a
@@ -84,7 +84,7 @@ const sfcPlaygroundUrl = computed(() => {
       </h6>
       <a >
       </a>
-    </legend>
+    </section>
 
     <section v-if="content?.content || desc" class="demo-block__description" v-html="content?.content ?? desc" />
 
@@ -114,14 +114,14 @@ const sfcPlaygroundUrl = computed(() => {
     </section>
 
     <section v-if="render" v-show="expand" class="demo-block__code" v-html="render" />
-  </fieldset>
+  </article>
 
   <div v-else-if="render" v-html="render" />
 </template>
 
 <style lang="sass" scoped>
 section
-  padding-inline: 16px
+  padding: 8px 16px
   color: var(--vp-c-text-1)
   font-size: 14px
   line-height: 2
@@ -137,11 +137,10 @@ section
     border-radius: 0 0 var(--demo-block-border-radius) var(--demo-block-border-radius)
 
 .demo-block
-  --demo-block-icon-color: var(--vp-button-alt-text)
-  --demo-block-icon-color-hover: var(--vp-button-alt-hover-text)
   --demo-block-border-radius: 4px
 
   margin: 0 0 16px 0
+  overflow: hidden
   color: var(--vp-c-text-1)
   border: 1px solid var(--vp-c-border)
   border-radius: var(--demo-block-border-radius)
@@ -151,27 +150,21 @@ section
     border-color: var(--vp-c-brand)
 
   &__title
-    margin-inline-start: 16px
-    padding: 5px 24px 4px 24px
-    border: inherit
-    border-radius: inherit
+    padding-block-start: 10px
+    background-color: var(--vp-c-bg-alt)
 
   &__description
-    padding-block: 8px 16px
-
     &::v-deep p
       margin-block: 2px
 
   &__demo
-    padding-block: 16px
     background-color: var(--vp-c-bg-alt)
 
     &::v-deep p
       margin-block: 0
 
   &__code
-    padding-inline: 0
-    overflow: auto
+    padding: 0
 
     &::v-deep div[class*='language-']
       margin: 0
@@ -181,16 +174,17 @@ section
     display: flex
     justify-content: center
     align-items: center
-    gap: 24px
-    padding-block: 8px
+    gap: 16px
 
   &__action
     position: relative
-    color: var(--demo-block-icon-color)
-    transition: color .25s
+    color: var(--vp-button-alt-text)
+    opacity: 0.55
+    transition: color .25s, opacity .25s
 
     &:hover
-      color: var(--demo-block-icon-color-hover)
+      color: inherit
+      opacity: 1
 
     svg
       width: 24px
@@ -198,20 +192,15 @@ section
 
   &__action-expand
     user-select: none
-    transition: opacity .25s
+    pointer-events: none
 
     + .demo-block__action-expand
       position: absolute
       inset: 0
 
     &--show
-      opacity: 0.55
       pointer-events: auto
-
-      &:hover
-        opacity: 1
 
     &--hide
       opacity: 0
-      pointer-events: none
 </style>
