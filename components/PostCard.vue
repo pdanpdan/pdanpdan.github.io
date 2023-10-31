@@ -1,8 +1,8 @@
 <template>
-  <a class="card" :href="href">
+  <component :is="href ? 'a' : 'section'" class="card" :href="href">
     <script-tag :meta="meta" />
 
-    <article>
+    <article :class="{ active: href }">
       <img
         v-if="imageSrc"
         class="thumbnail"
@@ -26,14 +26,14 @@
               by
               <address v-text="author" />
             </div>
-            <div v-if="date.iso">
+            <div v-if="date && date.iso">
               <time pubdate :datetime="date.iso" v-text="date.pretty" />
             </div>
           </div>
         </section>
       </div>
     </article>
-  </a>
+  </component>
 </template>
 
 <script>
@@ -85,13 +85,13 @@ export default {
         '@context': 'https://schema.org/',
         '@type': 'Article',
         headline: this.title,
-        description: this.date.excerpt,
+        description: this.excerpt,
         thumbnailUrl: this.image,
         author: {
           '@type': 'Person',
           name: this.author,
         },
-        datePublished: this.date.iso,
+        datePublished: this.date ? this.date.iso : null,
       });
     },
 
@@ -125,7 +125,7 @@ article
   box-shadow: var(--vp-shadow-1)
   transition: box-shadow 0.25s, background-color 0.25s
 
-  &:hover
+  &.active:hover
     background-color: var(--vp-c-bg-elv)
     box-shadow: var(--vp-shadow-2)
 
@@ -161,11 +161,20 @@ article
 
 .content
   flex-grow: 1
+  padding-inline: 8px
 
-h2
-  color: var(--vp-c-brand)
-  font-size: 1.2em
-  font-weight: bold
+  h2
+    color: var(--vp-c-brand)
+    font-size: 1.2em
+    font-weight: bold
+
+    margin: 8px 0 16px 0
+    padding: 0
+    border: none
+    letter-spacing: -0.02em
+
+  p
+    margin-block: 2px
 
 .info
   display: flex

@@ -45,7 +45,7 @@ export default createContentLoader('pages/posts/*.md', {
 
         return {
           title: frontmatter.title,
-          excerpt: truncateText(frontmatter.description, 100),
+          excerpt: truncateText(frontmatter.description, 150),
           image: getImagePath(url),
           author: frontmatter.author || 'PDan',
           href: url,

@@ -24,7 +24,7 @@
 <style lang="sass" scoped>
 .container
   padding: 1rem
-  max-width: 60rem
+  max-width: 1104px
   margin-inline: auto
 
 .tags

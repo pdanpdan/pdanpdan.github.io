@@ -1,12 +1,20 @@
 ---
-title: First post
-description: First post in a list of more posts. I hope.
-date: 2023-10-30
-tags: [test]
+title: Grouping form elements in Quasar
+description: Explain styling needed to group form elements in Quasar in order to make them look like a single element.
+date: 2023-10-31
+tags: [quasar, css]
 ---
 
-# First post
-{{ title }}
+<script setup>
+import PostHeader from 'components/PostHeader.vue';
+</script>
+
+<PostHeader />
+
+## Problem description
+
+<demo-block src="./post_001_01.demo.vue" />
+
 
 Post 1 content.
 

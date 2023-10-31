@@ -3,6 +3,8 @@ title: About
 description: Contact information
 ---
 
+# About PDan
+
 ## Contact
 
 * Name: Dan Popescu (PDan)

@@ -4,6 +4,8 @@ description: A list of projects I created or I worked on
 outline: [2, 3]
 ---
 
+# My Projects
+
 ## Quasar v1 (Vue 2)
 
 Quasar is a Vue based components framework that also provide an easy way to build cross-target applications (web, mobile - cordova/capacitor, desktop - electron).
