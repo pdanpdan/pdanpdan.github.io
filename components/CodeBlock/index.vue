@@ -154,19 +154,19 @@ section
     background-color: var(--vp-c-bg-alt)
 
   &__description
-    &::v-deep p
+    :deep(p)
       margin-block: 2px
 
   &__demo
     background-color: var(--vp-c-bg-alt)
 
-    &::v-deep p
+    :deep(p)
       margin-block: 0
 
   &__code
     padding: 0
 
-    &::v-deep div[class*='language-']
+    :deep(div[class*='language-'])
       margin: 0
       border-radius: inherit
 
