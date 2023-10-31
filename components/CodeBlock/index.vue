@@ -73,44 +73,42 @@ const sfcPlaygroundUrl = computed(() => {
 
 <template>
   <article v-if="!raw" class="demo-block" :class="{ 'demo-block--active': hash === titleId }">
-    <section v-if="content?.title || title" class="demo-block__title">
+    <section class="demo-block__title">
       <h6 :id="titleId">
-        {{ content?.title ?? title }}
+        {{ (content?.title ?? title) || 'Code' }}
         <a
           class="header-anchor"
           :href="`#${titleId}`"
           :aria-label="`Permalink to &quot;${ encodeURIComponent(content?.title ?? title) }&quot;`"
         />
       </h6>
-      <a >
-      </a>
+
+      <div class="demo-block__actions">
+        <a
+          v-if="playground"
+          class="demo-block__action"
+          :href="sfcPlaygroundUrl"
+          target="_blank"
+        >
+          <PlaygroundIcon />
+        </a>
+
+        <button v-if="code" class="demo-block__action">
+          <FileCopyIcon v-if="!copied" @click="handleCopy" />
+          <FileSuccessIcon v-else style="color: var(--vp-c-brand)" />
+        </button>
+
+        <button v-if="code" class="demo-block__action">
+          <UnExpandIcon :class="`demo-block__action-expand demo-block__action-expand--${expand ? 'show' : 'hide'}`" @click="handleExpand" />
+          <ExpandIcon :class="`demo-block__action-expand demo-block__action-expand--${!expand ? 'show' : 'hide'}`" @click="handleExpand" />
+        </button>
+      </div>
     </section>
 
     <section v-if="content?.content || desc" class="demo-block__description" v-html="content?.content ?? desc" />
 
     <section v-if="demo" class="demo-block__demo">
       <component :is="demo" />
-    </section>
-
-    <section class="demo-block__actions">
-      <a
-        v-if="playground"
-        class="demo-block__action"
-        :href="sfcPlaygroundUrl"
-        target="_blank"
-      >
-        <PlaygroundIcon />
-      </a>
-
-      <button v-if="code" class="demo-block__action">
-        <FileCopyIcon v-if="!copied" @click="handleCopy" />
-        <FileSuccessIcon v-else style="color: var(--vp-c-brand)" />
-      </button>
-
-      <button v-if="code" class="demo-block__action">
-        <UnExpandIcon :class="`demo-block__action-expand demo-block__action-expand--${expand ? 'show' : 'hide'}`" @click="handleExpand" />
-        <ExpandIcon :class="`demo-block__action-expand demo-block__action-expand--${!expand ? 'show' : 'hide'}`" @click="handleExpand" />
-      </button>
     </section>
 
     <section v-if="render" v-show="expand" class="demo-block__code" v-html="render" />
@@ -134,35 +132,41 @@ section
     border-block-start: 1px solid var(--vp-c-divider)
 
   &:first-of-type
-    border-radius: var(--demo-block-border-radius) var(--demo-block-border-radius) 0 0
+    border-radius: 0.5em 0.5em 0 0
 
   &:last-of-type
-    border-radius: 0 0 var(--demo-block-border-radius) var(--demo-block-border-radius)
+    border-radius: 0 0 0.5em 0.5em
 
 .demo-block
-  --demo-block-border-radius: 4px
-
   margin: 0 0 16px 0
   overflow: hidden
   color: var(--vp-c-text-1)
   border: 1px solid var(--vp-c-border)
-  border-radius: var(--demo-block-border-radius)
+  border-radius: 0.5em
   transition: border-color 0.25s
 
   &--active
     border-color: var(--vp-c-brand)
 
   &__title
+    padding-inline-end: 8px
+    display: flex
+    flex-wrap: nowrap
     padding-block-start: 10px
     color: var(--vp-custom-block-tip-text)
     background-color: var(--vp-custom-block-tip-bg)
+
+    h6
+      flex-grow: 1
+      font-size: 1.2em
 
   &__description
     color: var(--vp-custom-block-info-text)
     background-color: var(--vp-custom-block-info-bg)
 
     :deep(p)
-      margin-block: 2px
+      margin-block: 3px
+      line-height: 1.4
 
   &__demo
     // background-color: var(--vp-c-bg-alt)
@@ -178,12 +182,12 @@ section
       border-radius: inherit
 
   &__actions
+    padding-inline: 8px
     display: flex
     justify-content: center
     align-items: center
     gap: 16px
-    color: var(--vp-custom-block-info-text)
-    background-color: var(--vp-custom-block-info-bg)
+    color: var(--vp-custom-block-tip-text)
 
   &__action
     position: relative

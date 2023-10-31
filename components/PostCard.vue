@@ -171,13 +171,15 @@ article
     font-size: 1.2em
     font-weight: bold
 
-    margin: 8px 0 16px 0
+    margin: 8px 0 24px 0
     padding: 0
     border: none
-    letter-spacing: -0.02em
+    letter-spacing: 0
+    line-height: 1.3
 
   p
-    margin-block: 2px
+    margin-block: 3px
+    line-height: 1.4
 
 .info
   display: flex
