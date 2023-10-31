@@ -15,9 +15,19 @@
 html
   scrollbar-gutter: stable
 
-body
-  contain: layout
+@media (min-width: 960px)
+  .VPNav
+    position: sticky !important
+
+  .VPContent
+    padding-top: unset !important
+
+  .content
+    padding-block-end: 64px !important
 
 .VPHero
   .name
     font-weight: 800
+
+.header-anchor
+  min-width: 0.87em
