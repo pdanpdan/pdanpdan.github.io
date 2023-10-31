@@ -121,11 +121,14 @@ const sfcPlaygroundUrl = computed(() => {
 
 <style lang="sass" scoped>
 section
-  padding: 8px 16px
+  padding: 8px 24px
   color: var(--vp-c-text-1)
   font-size: 14px
   line-height: 2
   border-radius: 0
+
+  @media (max-width: 960px)
+    padding-inline: 16px
 
   & + section
     border-block-start: 1px solid var(--vp-c-divider)
@@ -151,14 +154,18 @@ section
 
   &__title
     padding-block-start: 10px
-    background-color: var(--vp-c-bg-alt)
+    color: var(--vp-custom-block-tip-text)
+    background-color: var(--vp-custom-block-tip-bg)
 
   &__description
+    color: var(--vp-custom-block-info-text)
+    background-color: var(--vp-custom-block-info-bg)
+
     :deep(p)
       margin-block: 2px
 
   &__demo
-    background-color: var(--vp-c-bg-alt)
+    // background-color: var(--vp-c-bg-alt)
 
     :deep(p)
       margin-block: 0
@@ -175,12 +182,14 @@ section
     justify-content: center
     align-items: center
     gap: 16px
+    color: var(--vp-custom-block-info-text)
+    background-color: var(--vp-custom-block-info-bg)
 
   &__action
     position: relative
-    color: var(--vp-button-alt-text)
     opacity: 0.55
     transition: color .25s, opacity .25s
+    color: inherit
 
     &:hover
       color: inherit

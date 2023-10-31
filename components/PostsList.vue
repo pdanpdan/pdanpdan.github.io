@@ -23,12 +23,15 @@
 
 <style lang="sass" scoped>
 .container
-  padding: 1rem
+  padding: 32px 24px 96px
   max-width: 1104px
   margin-inline: auto
 
 .tags
-  margin-block-end: 1em
+  padding-inline: 8px
+  padding-block-end: 16px
+  margin-block-end: 16px
+  border-block-end: 1px solid var(--vp-c-divider)
   display: flex
   gap: 0.4em
 
