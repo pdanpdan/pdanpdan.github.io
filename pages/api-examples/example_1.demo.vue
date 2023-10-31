@@ -1,7 +1,7 @@
 <docs>
 ---
 title: Test Title 1
-codepen: true
+playground: true
 ---
 
 Hello World This is Test Docs block code in `docs.vue`.

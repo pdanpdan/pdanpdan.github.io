@@ -6,11 +6,11 @@ import siteDemos from '@siteDemo';
 import { useSiteDemos } from './hooks/site-demo.js';
 import { useClipboard } from './hooks/clip-board.js';
 
-import ExpandComp from './icons/ExpandIcon.vue';
-import UnExpand from './icons/UnExpandIcon.vue';
-import FileCopy from './icons/FileCopyIcon.vue';
-import FileSuccess from './icons/FileSuccessIcon.vue';
-import Codepen from './icons/CodepenIcon.vue';
+import ExpandIcon from './icons/ExpandIcon.vue';
+import UnExpandIcon from './icons/UnExpandIcon.vue';
+import FileCopyIcon from './icons/FileCopyIcon.vue';
+import FileSuccessIcon from './icons/FileSuccessIcon.vue';
+import PlaygroundIcon from './icons/PlaygroundIcon.vue';
 
 const props = defineProps<{
   src: string;
@@ -30,7 +30,7 @@ if (import.meta.hot) {
   } );
 }
 
-const { demo, render, content, code } = useSiteDemos( props, siteDemoData );
+const { demo, render, content, code, playground } = useSiteDemos( props, siteDemoData );
 
 const titleId = computed(() => `d_${ props.src.split( '.' )[ 0 ].split( '/' ).join( '-' ) }`);
 
@@ -56,7 +56,7 @@ const handleExpand = () => {
 const sfcBaseUrl = 'https://sfc.vuejs.org/';
 const sfcPlaygroundUrl = computed(() => {
   const sfcJson = {
-    'App.vue': code.value,
+    'App.vue': playground.value,
   } as Record<string, string>;
 
   if (props.importMap) {
@@ -94,22 +94,22 @@ const sfcPlaygroundUrl = computed(() => {
 
     <section class="demo-block__actions">
       <a
-        v-if="content?.codepen"
+        v-if="playground"
         class="demo-block__action"
         :href="sfcPlaygroundUrl"
         target="_blank"
       >
-        <Codepen />
+        <PlaygroundIcon />
       </a>
 
       <button v-if="code" class="demo-block__action">
-        <FileCopy v-if="!copied" @click="handleCopy" />
-        <FileSuccess v-else style="color: var(--vp-c-brand)" />
+        <FileCopyIcon v-if="!copied" @click="handleCopy" />
+        <FileSuccessIcon v-else style="color: var(--vp-c-brand)" />
       </button>
 
       <button v-if="code" class="demo-block__action">
-        <UnExpand :class="`demo-block__action-expand demo-block__action-expand--${expand ? 'show' : 'hide'}`" @click="handleExpand" />
-        <ExpandComp :class="`demo-block__action-expand demo-block__action-expand--${!expand ? 'show' : 'hide'}`" @click="handleExpand" />
+        <UnExpandIcon :class="`demo-block__action-expand demo-block__action-expand--${expand ? 'show' : 'hide'}`" @click="handleExpand" />
+        <ExpandIcon :class="`demo-block__action-expand demo-block__action-expand--${!expand ? 'show' : 'hide'}`" @click="handleExpand" />
       </button>
     </section>
 
