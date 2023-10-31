@@ -141,13 +141,16 @@ article
 
   @media (max-width: 960px)
     max-width: 100%
+    border-radius: 0.5em 0.5em 0 0
 
   @media (min-width: 961px)
     margin-inline: 0 1em
+    border-radius: 0.5em 0 0 0.5em
 
     .card:nth-of-type(2n) &
       order: 2
       margin-inline: 1em 0
+      border-radius: 0 0.5em 0.5em 0
 
 .main
   padding: 1em
