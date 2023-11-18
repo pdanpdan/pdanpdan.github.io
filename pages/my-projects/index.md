@@ -21,6 +21,7 @@ Current version of [Quasar is v2 (Vue 3)](https://quasar.dev/), and the Quasar v
 
 This version will be supported for as long as I use it (so at least till the end of 2024).
 
+* Material Design Outlined style for form components (QField, QInput, QSelect)
 * touch directives are reactive
 * new `Interactive` plugin to manage events
 * new `KeyGroupNavigation` directive to manage TAB navigation in containers and roving navigation
@@ -52,6 +53,22 @@ If you need extended support / features / fixes for Quasar v1 please contact me 
 
 * reinstall the packages (`yarn cache clean --pattern quasar && yarn` / `pnpm i`)
 * no other changes are required
+
+## Quasar Play REPL
+
+A Vue REPL for Quasar, featuring:
+- Quasar Framework v2
+- VueRouter
+- VueI18n
+- Pinia
+- JS and/or TS
+
+You can create, share and save projects online in your browser.
+
+Now you have no excuse for not providing a repro in case you have issus :D
+
+* [Code](https://github.com/pdanpdan/quasar-play)
+* [Demo Online](https://pdanpdan.github.io/quasar-play/)
 
 ## Vue Keyboard Trap
 

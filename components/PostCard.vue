@@ -1,8 +1,8 @@
 <template>
-  <component :is="href ? 'a' : 'section'" class="card" :href="href">
+  <component :is="header ? 'section' : 'a'" class="card" :href="href">
     <script-tag :meta="meta" />
 
-    <article :class="{ active: href }">
+    <article :class="{ active: !header }">
       <img
         v-if="imageSrc"
         class="thumbnail"
@@ -11,8 +11,8 @@
       />
 
       <div class="main">
-        <section class="content">
-          <h2 class="title">{{ title }}</h2>
+        <section class="card__content">
+          <component :is="header ? 'h1' : 'h2'" class="title" :id="titleId">{{ title }}</component>
           <p v-if="excerpt" class="excerpt">{{ excerpt }}</p>
         </section>
 
@@ -73,6 +73,7 @@ export default {
       type: Array,
       default: null,
     },
+    header: Boolean,
   },
 
   components: {
@@ -103,6 +104,10 @@ export default {
         return withBase(images[`${ this.image }.png`]);
       }
       return null;
+    },
+
+    titleId() {
+      return `d_${ this.href.split('.')[0].split('/').join('-') }`;
     },
   },
 };
@@ -162,11 +167,11 @@ article
   @media (max-width: 960px)
     padding: 2em 1em 1em 1em
 
-.content
+.card__content
   flex-grow: 1
   padding-inline: 8px
 
-  h2
+  .title
     color: var(--vp-c-brand)
     font-size: 1.2em
     font-weight: bold
