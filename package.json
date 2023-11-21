@@ -19,8 +19,8 @@
     "eslint-plugin-vue": "^9.18.1",
     "postcss": "^8.4.31",
     "sass": "^1.69.5",
-    "vite-plugin-vitepress-demo": "^2.1.0",
-    "vitepress": "1.0.0-rc.25"
+    "vite-plugin-vitepress-demo": "^2.2.0",
+    "vitepress": "1.0.0-rc.29"
   },
   "pnpm": {
     "peerDependencyRules": {
