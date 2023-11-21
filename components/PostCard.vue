@@ -1,5 +1,10 @@
 <template>
-  <component :is="header ? 'section' : 'a'" class="card" :href="href">
+  <component
+    :is="header ? 'section' : 'a'"
+    class="card"
+    :class="{ featured: featured && !header }"
+    :href="href"
+  >
     <script-tag :meta="meta" />
 
     <article :class="{ active: !header }">
@@ -74,6 +79,7 @@ export default {
       default: null,
     },
     header: Boolean,
+    featured: Boolean,
   },
 
   components: {
@@ -120,6 +126,13 @@ export default {
 
   + .card
     margin-top: 2rem
+
+  &.featured
+    transform: scale(1.04, 1.04)
+
+    article
+      border: 2px solid var(--vp-c-brand-3)
+      box-shadow: var(--vp-shadow-3), var(--vp-shadow-2)
 
 article
   display: flex
@@ -195,6 +208,7 @@ article
 .tags
   flex-grow: 1
   display: flex
+  flex-wrap: wrap
   gap: 0.4em
   padding-inline-end: 1em
 

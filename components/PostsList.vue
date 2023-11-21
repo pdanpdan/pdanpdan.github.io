@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div v-if="tags.names.length > 0" class="tags">
+    <div v-if="featured !== true && tags.names.length > 0" class="tags">
       <button
         v-for="tag in tags.names"
         :key="tag"
@@ -85,13 +85,21 @@ import PostCard from 'components/PostCard.vue';
 
 import { data } from 'theme/posts.data.js';
 
-const { posts, tags } = data;
+const props = defineProps({
+  featured: Boolean,
+});
+
+const { posts, featured: featuredPosts, tags } = data;
 const tagsStatus = toReactive(useLocalStorage(
   'post-tags-status',
   tags.status,
   { mergeDefaults: true },
 ));
 const filteredPosts = computed(() => {
+  if (props.featured === true) {
+    return featuredPosts;
+  }
+
   const needles = tags.names.filter((t) => tagsStatus[t]);
 
   return posts.filter((post) => post.tags.some((t) => needles.includes(t)));

@@ -51,12 +51,21 @@ export default createContentLoader('pages/posts/*.md', {
           href: url,
           date: formatDate(frontmatter.date),
           tags: postTags,
+          featured: frontmatter.featured === true,
         };
       })
       .sort((a, b) => b.date.ts - a.date.ts);
 
     const tagNames = Object.keys(tagStats).sort((t1, t2) => (tagStats[t2] - tagStats[t1]));
     const tagStatus = Object.fromEntries(tagNames.map((tag) => ([tag, true])));
+
+    let featured = posts.filter((post) => post.featured);
+    if (featured.length < 3) {
+      featured = [
+        ...featured,
+        ...posts.filter((post) => featured.includes(post) === false).slice(0, 3 - featured.length),
+      ];
+    }
 
     return {
       tags: {
@@ -66,6 +75,8 @@ export default createContentLoader('pages/posts/*.md', {
       },
 
       posts,
+
+      featured,
     };
   },
 });

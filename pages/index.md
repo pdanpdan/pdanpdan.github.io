@@ -26,3 +26,9 @@ features:
   - title: Backend
     details: Backend / API related information. Don't mix frontend and backend to have an easy life.
 ---
+
+<script setup>
+import PostsList from 'components/PostsList.vue';
+</script>
+
+<PostsList featured />
