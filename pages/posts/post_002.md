@@ -1,7 +1,7 @@
 ---
 title: Grouping form elements in Quasar
 description: Explain styling needed to group form elements in Quasar in order to make them look like a single element.
-date: 2023-11-15
+date: 2023-11-20
 tags: [quasar, css]
 outline: deep
 ---
