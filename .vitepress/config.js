@@ -6,7 +6,7 @@ import VitePluginVitepressDemo from 'vite-plugin-vitepress-demo';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'en-US',
-  titleTemplate: ':title | PDan',
+  titleTemplate: ':title | PDan Blog',
 
   srcDir: 'pages',
 
@@ -26,7 +26,7 @@ export default defineConfig({
 
     nav: [
       { text: 'My Projects', link: '/my-projects/' },
-      { text: 'Posts', link: '/posts/' },
+      { text: 'Blog Posts', link: '/posts/' },
       { text: 'About', link: '/about/' },
     ],
 

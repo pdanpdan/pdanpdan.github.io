@@ -5,14 +5,14 @@ layout: home
 title: Home Page
 
 hero:
-  name: PDanPDan
+  name: PDanPDan Blog
   tagline: Web develoment tips & tricks
   actions:
     - theme: brand
       text: My Projects
       link: /my-projects/
-    - theme: alt
-      text: Posts
+    - theme: brand
+      text: Blog Posts
       link: /posts/
     - theme: alt
       text: About
@@ -21,8 +21,8 @@ hero:
 features:
   - title: Quasar
     details: Hint and examples for using Quasar Framework. Get the best results with minimal effort.
-  - title: CSS
-    details: How to get what you want with CSS. There is nothing to be scared of.
+  - title: Vue / [JT]S / HTML / CSS
+    details: How to get what you want with Vue / [JT]S / HTML / CSS. There is nothing to be scared of.
   - title: Backend
     details: Backend / API related information. Don't mix frontend and backend to have an easy life.
 ---
