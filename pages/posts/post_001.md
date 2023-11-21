@@ -2,7 +2,7 @@
 title: Vue REPL for Quasar
 description: Introducing the new Vue REPL for Quasar Framework v2.
 date: 2023-11-19
-tags: [quasar, repl]
+tags: [quasar, repl, javascript, typescript, css, vue]
 outline: deep
 ---
 

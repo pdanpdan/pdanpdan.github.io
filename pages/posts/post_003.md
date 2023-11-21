@@ -2,7 +2,7 @@
 title: Generic composable function for Quasar QSelect with filtering
 description: A Vue composable for simplifying the usage of QSelect with filtering in Quasar.
 date: 2023-11-21
-tags: [quasar, javascript]
+tags: [quasar, javascript, typescript]
 outline: deep
 ---
 
