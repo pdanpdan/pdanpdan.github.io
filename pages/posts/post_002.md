@@ -10,6 +10,8 @@ outline: deep
 import PostHeader from 'components/PostHeader.vue';
 </script>
 
+# Grouping form elements in Quasar {.hidden}
+Explain styling needed to group form elements in Quasar in order to make them look like a single element. {.hidden}
 <PostHeader />
 
 ## Problem description

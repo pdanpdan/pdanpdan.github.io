@@ -10,6 +10,8 @@ outline: deep
 import PostHeader from 'components/PostHeader.vue';
 </script>
 
+# Vue REPL for Quasar {.hidden}
+Introducing the new Vue REPL for Quasar Framework v2. {.hidden}
 <PostHeader />
 
 ## Where?

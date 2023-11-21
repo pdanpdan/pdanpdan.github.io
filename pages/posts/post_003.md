@@ -10,6 +10,8 @@ outline: deep
 import PostHeader from 'components/PostHeader.vue';
 </script>
 
+# Generic composable function for Quasar QSelect with filtering {.hidden}
+A Vue composable for simplifying the usage of QSelect with filtering in Quasar. {.hidden}
 <PostHeader />
 
 ## Problem description
