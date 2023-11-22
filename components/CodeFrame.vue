@@ -15,13 +15,14 @@ export default {
   },
 
   render() {
-    return h('iframe', {
-      class: 'vp-quasar-repl',
-      loading: 'lazy',
-      allow: 'fullscreen; camera; geolocation; gyroscope; microphone; web-share; storage-access; clipboard-write',
-      areaLabel: `Demo${ this.title.trim().length > 0 ? `: ${ this.title }` : '' }`,
-      src: this.src,
-    });
+    return h('div', { class: 'vp-quasar-repl' }, [
+      h('iframe', {
+        loading: 'lazy',
+        allow: 'fullscreen; camera; geolocation; gyroscope; microphone; web-share; storage-access; clipboard-write',
+        areaLabel: `Demo${ this.title.trim().length > 0 ? `: ${ this.title }` : '' }`,
+        src: this.src,
+      }),
+    ]);
   },
 };
 </script>
