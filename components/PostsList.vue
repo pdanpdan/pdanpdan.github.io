@@ -28,12 +28,27 @@
   margin-inline: auto
 
 .tags
+  display: none
+  position: sticky
+  top: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + var(--vp-doc-top-height, 0px))
+  margin-block-start: -32px
+  margin-inline: -24px
   padding-inline: 8px
-  padding-block-end: 16px
+  padding-block: 8px
   margin-block-end: 16px
   border-block-end: 1px solid var(--vp-c-divider)
   display: flex
+  flex-wrap: wrap
   gap: 0.4em
+  background-color: var(--vp-local-nav-bg-color)
+  z-index: var(--vp-z-index-local-nav)
+
+  @media (min-width: 960px)
+    padding-inline: 32px
+
+  .VPLocalNav.reached-top ~ .VPContent &
+    @media (max-width: 959px)
+      top: calc(49px + var(--vp-layout-top-height, 0px) + var(--vp-doc-top-height, 0px))
 
   button
     font-size: 0.9em
