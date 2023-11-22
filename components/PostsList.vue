@@ -48,7 +48,7 @@
 
   .VPLocalNav.reached-top ~ .VPContent &
     @media (max-width: 959px)
-      top: calc(49px + var(--vp-layout-top-height, 0px) + var(--vp-doc-top-height, 0px))
+      top: calc(48px + var(--vp-layout-top-height, 0px) + var(--vp-doc-top-height, 0px))
 
   button
     font-size: 0.9em
