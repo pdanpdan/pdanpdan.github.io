@@ -40,6 +40,12 @@ This composable will be combined with a filtering function. There are three pre-
 - one that receives a configuration object with the name of a key to search and the compare method and returns a function that filters the list by the content of that key as string, case insensitive, using compare methods (starts width, anywhere, ends with)
 - one that returns the whole list (for server side filtering)
 
+The search function generator `createMappedFilterFn` gets a configuration object and returns a generic filtering function. You can specify (object and all configs are optional):
+- `key`: what key in the items to use (leave empty to search in the whole item as string)
+- `compareType`: one of 'includes', 'startsWith', or 'endsWith' (defaults to 'includes')
+- `filter`: a function that takes what you are searching for (needle) and returns a function that takes an item and returns a truthy value - you can use this to customize for special cases
+
+
 ::: code-group
 ```ts [useFilteredSelect.ts]
 import { ref, unref, reactive, type MaybeRefOrGetter } from 'vue';
