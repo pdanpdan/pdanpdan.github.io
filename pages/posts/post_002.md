@@ -19,13 +19,14 @@ You need to group two Quasar form components together (most frequently a QInput 
 
 ## Solution
 
-First you combine the components.
+First you combine the components, and then you need some CSS to make it look good. It works both for LTR and RTL languages.
 
 ::: warning
 Take care not to mix `dense` and not `dense` components.
 :::
 
-```html
+::: code-group
+```html [html]
 <q-input class="grouped-outline grouped-outline--before" v-model="text" outlined dense>
   <template #before>
     <q-select
@@ -56,9 +57,7 @@ Take care not to mix `dense` and not `dense` components.
 </q-input>
 ```
 
-Then you need some CSS to make it look good. It works both for LTR and RTL languages.
-
-```sass
+```sass [sass]
 .q-field.grouped-outline
   &--before
     > .q-field__before
@@ -98,6 +97,7 @@ Then you need some CSS to make it look good. It works both for LTR and RTL langu
       &:not(:hover):before
         border-inline-end-color: transparent
 ```
+:::
 
 ## Demo
 

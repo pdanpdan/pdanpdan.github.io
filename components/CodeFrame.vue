@@ -18,7 +18,7 @@ export default {
     return h('iframe', {
       class: 'vp-quasar-repl',
       loading: 'lazy',
-      allow: 'fullscreen camera geolocation gyroscope microphone web-share',
+      allow: 'fullscreen; camera; geolocation; gyroscope; microphone; web-share; storage-access; clipboard-write',
       areaLabel: `Demo${ this.title.trim().length > 0 ? `: ${ this.title }` : '' }`,
       src: this.src,
     });
