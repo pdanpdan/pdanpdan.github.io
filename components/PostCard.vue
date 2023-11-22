@@ -152,8 +152,8 @@ article
 
 .thumbnail
   max-width: 45%
-  max-height: 200px
-  aspect-ratio: 16/9
+  max-height: 250px
+  aspect-ratio: 16/10
   object-fit: cover
   order: 1
 
