@@ -1,5 +1,5 @@
 ---
-title: About
+title: About PDan
 description: Contact information
 ---
 

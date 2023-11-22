@@ -11,6 +11,7 @@
       <img
         v-if="imageSrc"
         class="thumbnail"
+        loading="lazy"
         :src="imageSrc"
         :alt="title"
       />

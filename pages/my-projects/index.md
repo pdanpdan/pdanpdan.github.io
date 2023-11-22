@@ -6,7 +6,7 @@ outline: [2, 3]
 
 # My Projects
 
-## Quasar v1 (Vue 2)
+## Quasar v1 (Vue 2) {.title--big}
 
 Quasar is a Vue based components framework that also provide an easy way to build cross-target applications (web, mobile - cordova/capacitor, desktop - electron).
 
@@ -54,7 +54,7 @@ If you need extended support / features / fixes for Quasar v1 please contact me 
 * reinstall the packages (`yarn cache clean --pattern quasar && yarn` / `pnpm i`)
 * no other changes are required
 
-## Quasar Play REPL
+## Quasar Play REPL {.title--big}
 
 A Vue REPL for Quasar, featuring:
 - Quasar Framework v2
@@ -70,7 +70,7 @@ Now you have no excuse for not providing a repro in case you have issus :D
 * [Code](https://github.com/pdanpdan/quasar-play)
 * [Demo Online](https://pdanpdan.github.io/quasar-play/)
 
-## Vue Keyboard Trap
+## Vue Keyboard Trap {.title--big}
 
 A Vue 3 and Vue 2 directive for keyboard navigation / TAB trapping - roving movement and trapping inside container that can greatly improve a11y in your applications.
 
@@ -78,14 +78,14 @@ A Vue 3 and Vue 2 directive for keyboard navigation / TAB trapping - roving move
 * [Documentation](https://pdanpdan.github.io/vue-keyboard-trap/)
 * [Demo CodePen](https://codepen.io/pdanpdan/pen/MWrzLdM)
 
-## Wordle Solver
+## Wordle Solver {.title--big}
 
 A solver / helper for the Wordle game. Can be used as `solver` or as `game`, in both `easy` and `hard` modes.
 
 * [Code](https://github.com/pdanpdan/wordle-solver)
 * [Online Solver](https://pdanpdan.github.io/wordle-solver/)
 
-## SSL Certificate Manager
+## SSL Certificate Manager {.title--big}
 
 A desktop / electron application to inspect and validate SSL certificates.
 

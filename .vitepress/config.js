@@ -18,8 +18,43 @@ export default defineConfig({
       provider: 'local',
       options: {
         miniSearch: {
+          /**
+           * @type {Pick<import('minisearch').Options, 'extractField' | 'tokenize' | 'processTerm'>}
+           */
           options: {},
+          /**
+           * @type {import('minisearch').SearchOptions}
+           * @default
+           * { fuzzy: 0.2, prefix: true, boost: { title: 4, text: 2, titles: 1 } }
+           */
           searchOptions: {},
+        },
+
+        _render(src, env, md) {
+          const html = md.render(src, env);
+          if (env.frontmatter?.search === false) {
+            return '';
+          }
+
+          const preMd = [];
+          let text;
+          if (env.frontmatter?.title) {
+            const inPosts = env.relativePath.startsWith('posts/') ? '[Post] ' : '';
+            text = md.render(`# ${ inPosts }${ env.frontmatter.title }`);
+
+            if (html.includes(text) === false) {
+              preMd.push(text);
+            }
+          }
+          if (env.frontmatter?.description) {
+            text = md.render(env.frontmatter.description);
+
+            if (html.includes(text) === false) {
+              preMd.push(text);
+            }
+          }
+
+          return preMd.join('\n') + html;
         },
       },
     },
