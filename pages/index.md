@@ -6,7 +6,11 @@ title: Home Page
 
 hero:
   name: PDanPDan Blog
-  tagline: Web develoment tips & tricks
+  text: About Web develoment
+  tagline: Tricks and trips to solve frequent problems
+  image:
+    src: /logo3.jpg
+    alt: Photo of PDan
   actions:
     - theme: brand
       text: My Projects
@@ -21,6 +25,7 @@ hero:
 features:
   - title: Quasar
     details: Hint and examples for using Quasar Framework. Get the best results with minimal effort.
+
   - title: Vue / [JT]S / HTML / CSS
     details: How to get what you want with Vue / [JT]S / HTML / CSS. There is nothing to be scared of.
   - title: Backend

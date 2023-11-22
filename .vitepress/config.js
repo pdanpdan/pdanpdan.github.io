@@ -46,7 +46,7 @@ export default defineConfig({
   },
 
   vite: {
-    publicDir: './public',
+    publicDir: '../public',
     plugins: [
       VitePluginVitepressDemo({
         glob: [
