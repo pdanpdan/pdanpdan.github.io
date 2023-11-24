@@ -27,75 +27,126 @@ Take care not to mix `dense` and not `dense` components.
 
 ::: code-group
 ```html [html]
-<q-input class="grouped-outline grouped-outline--before" v-model="text" outlined dense>
+<q-input class="q-field--grouped-before" v-model="text" outlined dense>
   <template #before>
     <q-select
       v-model="select"
       outlined
       dense
       :options="options"
-    ></q-select>
+    />
   </template>
 
   <template #append>
-    <q-icon name='search'></q-icon>
+    <q-icon name='search' />
   </template>
 </q-input>
 
-<q-input class="grouped-outline grouped-outline--before" v-model="text" outlined>
+<q-input class="q-field--grouped-after" v-model="text" outlined>
   <template #after>
     <q-select
       v-model="select"
       outlined
       :options="options"
-    ></q-select>
+    />
   </template>
 
   <template #prepend>
-    <q-icon name='search'></q-icon>
+    <q-icon name='search' />
   </template>
 </q-input>
 ```
 
 ```sass [sass]
-.q-field.grouped-outline
-  &--before
+.q-field
+  &.q-field--grouped-before
     > .q-field__before
       padding-inline-end: 0
 
       > .q-field--outlined
         margin-inline-end: -1px
 
+      > .q-field--outlined,
+      > .q-field--filled
         .q-field__inner > .q-field__control
           border-start-end-radius: 0
           border-end-end-radius: 0
 
+      > .q-field--filled,
+      > .q-field--standard
+        .q-field__inner > .q-field__control:after
+          transform-origin: right bottom
+
     > .q-field__inner > .q-field__control
       border-start-start-radius: 0
       border-end-start-radius: 0
+
+    &.q-field--outlined > .q-field__inner > .q-field__control
       margin-inline-start: -1px
 
       &:not(:hover):before
         border-inline-start-color: transparent
 
-  &--after
+    &.q-field--filled,
+    &.q-field--standard
+      > .q-field__inner > .q-field__control:after
+        transform-origin: left bottom
+
+  &.q-field--grouped-after
     > .q-field__after
       padding-inline-start: 0
 
-      > .q-field--outlined
+      > .q-field.q-field--outlined
         margin-inline-start: -1px
 
+      > .q-field--outlined,
+      > .q-field--filled
         .q-field__inner > .q-field__control
           border-start-start-radius: 0
           border-end-start-radius: 0
 
+      > .q-field--filled,
+      > .q-field--standard
+        .q-field__inner > .q-field__control:after
+          transform-origin: left bottom
+
     > .q-field__inner > .q-field__control
       border-start-end-radius: 0
       border-end-end-radius: 0
+
+    &.q-field--outlined > .q-field__inner > .q-field__control
       margin-inline-end: -1px
 
       &:not(:hover):before
         border-inline-end-color: transparent
+
+    &.q-field--filled,
+    &.q-field--standard
+      > .q-field__inner > .q-field__control:after
+        transform-origin: right bottom
+
+    &.q-field--grouped-before
+      > .q-field__after > .q-field.q-field--outlined
+        margin-inline-start: -3px
+
+      &.q-field--filled,
+      &.q-field--standard
+        > .q-field__inner > .q-field__control:after
+          transform-origin: center bottom
+          transition-delay: 0.26s
+
+      &.q-field--highlighted
+        &.q-field--filled,
+        &.q-field--standard
+          > .q-field__inner > .q-field__control:after
+            transition-delay: 0s
+
+        > .q-field__before > .q-field,
+        > .q-field__after > .q-field
+          &.q-field--filled,
+          &.q-field--standard
+            > .q-field__inner > .q-field__control:after
+              transition-delay: .26s
 ```
 :::
 
@@ -105,5 +156,5 @@ The Vue REPL does not support processing SASS syntax yet, so the styles are conv
 
 <code-frame
   :title="$frontmatter.title"
-  src="https://pdanpdan.github.io/quasar-play/?file=src%2FApp.vue&preview&previewMode=preview&editor=codemirror#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"
+  src="https://pdanpdan.github.io/quasar-play/?file=src%2Fstyles.css&preview=t&previewMode=preview&editor=codemirror#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"
 />
