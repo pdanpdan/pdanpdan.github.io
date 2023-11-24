@@ -132,21 +132,21 @@ export default {
     transform: scale(1.04, 1.04)
 
     article
-      border: 2px solid var(--vp-c-brand-3)
-      box-shadow: var(--vp-shadow-3), var(--vp-shadow-2)
+      outline: 4px solid var(--vp-c-brand-3)
+      outline-offset: -4px
 
 article
   display: flex
   overflow: hidden
   border-radius: 0.5em
   border: 1px solid var(--vp-c-border)
-  background-color: var(--vp-c-bg-alt)
+  background-color: var(--vp-c-bg)
   box-shadow: var(--vp-shadow-1)
   transition: box-shadow 0.25s, background-color 0.25s
 
   &.active:hover
     background-color: var(--vp-c-bg-elv)
-    box-shadow: var(--vp-shadow-2)
+    box-shadow: var(--vp-shadow-5), var(--vp-shadow-2)
 
   @media (max-width: 960px)
     flex-direction: column
