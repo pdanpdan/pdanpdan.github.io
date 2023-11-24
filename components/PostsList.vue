@@ -7,6 +7,7 @@
         type="button"
         :class="{ selected: tagsStatus[tag] }"
         @click="tagsStatus[tag] = tagsStatus[tag] !== true"
+        @dblclick="(ev) => tagOnly(tag, ev)"
       >
         {{ tag }}
         <span>{{ tags.stats[tag] }}</span>
@@ -93,7 +94,7 @@
 </style>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, unref } from 'vue';
 import { toReactive, useLocalStorage } from '@vueuse/core';
 
 import PostCard from 'components/PostCard.vue';
@@ -119,4 +120,32 @@ const filteredPosts = computed(() => {
 
   return posts.filter((post) => post.tags.some((t) => needles.includes(t)));
 });
+
+let tagOnlyState = null;
+
+function tagOnly(tag, ev) {
+  if (tagOnlyState !== null && tagOnlyState.tag === tag) {
+    tagOnlyState.state.forEach(([t, v]) => {
+      tagsStatus[t] = v === true;
+    });
+  }
+
+  if (tagOnlyState === null || tagOnlyState.tag !== tag) {
+    tagOnlyState = {
+      tag,
+      state: Object.entries(unref(tagsStatus)),
+    };
+    console.log(tagOnlyState);
+
+    Object.keys(tagsStatus).forEach((t) => {
+      tagsStatus[t] = t === tag;
+    });
+  } else {
+    tagOnlyState.tag = null;
+  }
+
+  if (ev) {
+    ev.preventDefault();
+  }
+}
 </script>
