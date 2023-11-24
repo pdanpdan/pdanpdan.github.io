@@ -94,32 +94,34 @@ const zoomed = ref(false);
   padding: 0
   width: 32px
   height: 32px
-  inset: auto 4px 4px auto
+  inset: auto 24px 24px auto
   border-radius: 4px
   border: 1px solif var(--vp-button-alt-border)
+  background-color: var(--vp-c-bg)
   z-index: 1
-  background-color: var(--vp-button-alt-bg)
-  color: var(--vp-button-alt-text)
 
   @media (min-width: 1280px)
     display: block
 
   > svg
     position: absolute
-    inset: 2px
+    border-radius: 4px
+    inset: 0
     pointer-events: none
+    background-color: var(--vp-button-alt-bg)
+    color: var(--vp-button-alt-text)
 
-  &:hover
-    border: 1px solif var(--vp-button-alt-hover-border)
-    color: var(--vp-button-alt-hover-text)
-    background-color: var(--vp-button-alt-hover-bg)
+    &:hover
+      border: 1px solif var(--vp-button-alt-hover-border)
+      color: var(--vp-button-alt-hover-text)
+      background-color: var(--vp-button-alt-hover-bg)
 
-  &:active
-    border: 1px solif var(--vp-button-alt-active-border)
-    color: var(--vp-button-alt-active-text)
-    background-color: var(--vp-button-alt-active-bg)
+    &:active
+      border: 1px solif var(--vp-button-alt-active-border)
+      color: var(--vp-button-alt-active-text)
+      background-color: var(--vp-button-alt-active-bg)
 
-  &--active
+  &--active > svg
     color: var(--vp-button-brand-text)
     background-color: var(--vp-button-brand-bg)
 
