@@ -63,7 +63,7 @@ export default createContentLoader('pages/posts/*.md', {
     if (featured.length < 3) {
       featured = [
         ...featured,
-        ...posts.filter((post) => featured.includes(post) === false).slice(0, 3 - featured.length),
+        ...posts.filter((post) => featured.includes(post) === false).slice(0, 10 - featured.length),
       ];
     }
 
