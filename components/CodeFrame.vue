@@ -22,8 +22,8 @@ const zoomed = ref(false);
       <iframe
         loading="lazy"
         allow="fullscreen; camera; geolocation; gyroscope; microphone; web-share; storage-access; clipboard-write"
-        :areaLabel="`Demo${ this.title.trim().length > 0 ? `: ${ this.title }` : '' }`"
-        :title="`Demo${ this.title.trim().length > 0 ? `: ${ this.title }` : '' }`"
+        :areaLabel="`Demo${ title.trim().length > 0 ? `: ${ title }` : '' }`"
+        :title="`Demo${ title.trim().length > 0 ? `: ${ title }` : '' }`"
         :src="src"
       />
 
