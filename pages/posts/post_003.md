@@ -43,63 +43,64 @@ This composable will be combined with a filtering function. There are three pre-
 The search function generator `createMappedFilterFn` gets a configuration object and returns a generic filtering function. You can specify (object and all configs are optional):
 - `key`: what key in the items to use (leave empty to search in the whole item as string)
 - `compareType`: one of 'includes', 'startsWith', or 'endsWith' (defaults to 'includes')
-- `filter`: a function that takes what you are searching for (needle) and returns a function that takes an item and returns a truthy value - you can use this to customize for special cases
+- `getMatchFn`: a function that takes what you are searching for (needle) and returns a function that takes an item and returns a truthy value (if it matches or not) - you can use this to customize for special cases
 
 
 ::: code-group
 ```ts [useFilteredSelect.ts]
-import { ref, unref, reactive, type MaybeRefOrGetter } from 'vue';
+import { shallowRef, unref, reactive, type MaybeRef, type ShallowRef } from 'vue';
+import type { QSelect, QSelectProps } from 'quasar';
 
 type MaybePromise<T> = T | Promise<T> | PromiseLike<T>;
 
 export function createMappedFilterFn(config?: {
-  key?: string | null,
-  compareType?: 'includes' | 'startsWith' | 'endsWith',
-  filter?: <T>(needle: string) => (item: T) => boolean,
+  key?: string | null;
+  compareType?: 'includes' | 'startsWith' | 'endsWith';
+  getMatchFn?: (needle: string) => <T>(item: T, index: number, list: T[]) => boolean;
 }) {
   const compareType = config?.compareType || 'includes';
-  const filter = config?.filter || (
-    [null, undefined, ''].includes(config?.key)
-      ? (needle) => (item) => String(item).toLocaleLowerCase()[compareType](needle)
-      : (needle) => (item) => String(item[config.key]).toLocaleLowerCase()[compareType](needle)
+  const key = config?.key || '';
+  const getMatchFn = config?.getMatchFn || (
+    key !== ''
+      ? (needle: string) => <T extends Record<string, unknown>>(item: T) => String(item[ key ]).toLocaleLowerCase()[ compareType ](needle)
+      : (needle: string) => <T>(item: T) => String(item).toLocaleLowerCase()[ compareType ](needle)
   );
 
-  return function <T>(search: string, list: Array<T>) {
-    if ([null, undefined, ''].includes(search)) {
+  return function <T>(search: string, list: T[]) {
+    if ([ null, undefined, '' ].includes(search)) {
       return list;
     }
 
     const needle = String(search).toLocaleLowerCase();
-    return list.filter(filter(needle));
+
+    return list.filter(getMatchFn(needle) as (item: T) => boolean);
   };
 }
 
 export const stringFilterFn = createMappedFilterFn();
-export const noFilterFn = <T,>(_, items: Array<T>) => items;
+export const noFilterFn = <T>(_: unknown, items: T[]) => items;
 
-export function useFilteredSelect<O, P extends Record<string, unknown>, QSelRef>(
+export function useFilteredSelect<T, K extends keyof QSelectProps>(
   optionsOrFn:
-    | MaybeRefOrGetter<Array<O>>
-    | ((search: string) => MaybePromise<MaybeRefOrGetter<Array<O>>>),
-  filterFn: (search: string, list: Array<O>) => Array<O> = stringFilterFn,
-  props: P = {} as P,
-  afterFn?: (ref: QSelRef) => void,
+    | MaybeRef<T[]>
+    | ((search: string) => MaybePromise<MaybeRef<T[]>>),
+  filterFn: (search: string, list: T[]) => T[] = stringFilterFn,
+  props?: Pick<QSelectProps, K>,
+  afterFn?: (ref: QSelect) => void,
 ) {
-  const getOptions =
-    typeof optionsOrFn === 'function' ? optionsOrFn : () => optionsOrFn;
-  const filteredOpts = ref(
-    typeof optionsOrFn === 'function' ? [] : optionsOrFn,
-  );
-  return reactive({
+  const getOptions = typeof optionsOrFn === 'function' ? optionsOrFn : () => optionsOrFn;
+  const filteredOpts = shallowRef(typeof optionsOrFn === 'function' ? [] : optionsOrFn);
+
+  const useProps: Pick<QSelectProps, K> | { options: ShallowRef<QSelectProps[ 'options' ]>, onFilter: QSelectProps[ 'onFilter' ]; } = {
     ...props,
     options: filteredOpts,
     onFilter(
       search: string,
-      doneFn: (callbackFn: () => void, afterFn?: (ref: QSelRef) => void) => void,
+      doneFn: (callbackFn: () => void, afterFn?: (ref: QSelect) => void) => void,
       abortFn: () => void,
     ) {
       Promise.resolve(getOptions(search))
-        .then((options: Array<O>) => {
+        .then((options) => {
           const newOpts = filterFn(search, unref(options));
           doneFn(() => {
             filteredOpts.value = newOpts;
@@ -109,7 +110,9 @@ export function useFilteredSelect<O, P extends Record<string, unknown>, QSelRef>
           abortFn();
         });
     },
-  });
+  };
+
+  return reactive(useProps);
 }
 ```
 
@@ -252,7 +255,6 @@ const model3 = ref(null);
 const model4 = ref(null);
 const model5 = ref(null);
 </script>
-</script>
 ```
 :::
 
@@ -260,5 +262,5 @@ const model5 = ref(null);
 
 <code-frame
   :title="$frontmatter.title"
-  src="https://pdanpdan.github.io/quasar-play/?file=src%2FApp.vue&preview&previewMode=preview&editor=codemirror#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"
+  src="https://pdanpdan.github.io/quasar-play/?file=src%2FuseFilteredSelect.ts&preview=t&previewMode=preview&editor=codemirror#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"
 />
