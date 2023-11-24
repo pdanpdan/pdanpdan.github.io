@@ -1,5 +1,5 @@
 ---
-title: Draggable summary-details draggable bottom drawer
+title: Draggable summary-details bottom drawer
 description: A draggable bottom drawer/card with two open positions - half and full (summary and details).
 date: 2023-11-24
 tags: [vue, quasar, css]
