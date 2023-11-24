@@ -34,16 +34,16 @@ const zoomed = ref(false);
         aria-label="Zoom"
         @click="zoomed = zoomed !== true"
       >
-        <div />
+        <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M288 928h-96c-52.8 0-96-43.2-96-96v-96c0-17.6 14.4-32 32-32s32 14.4 32 32v96c0 17.6 14.4 32 32 32h96c17.6 0 32 14.4 32 32s-14.4 32-32 32z m544 0h-96c-17.6 0-32-14.4-32-32s14.4-32 32-32h96c17.6 0 32-14.4 32-32v-96c0-17.6 14.4-32 32-32s32 14.4 32 32v96c0 52.8-43.2 96-96 96z m64-608c-17.6 0-32-14.4-32-32v-96c0-17.6-14.4-32-32-32h-96c-17.6 0-32-14.4-32-32s14.4-32 32-32h96c52.8 0 96 43.2 96 96v96c0 17.6-14.4 32-32 32z m-768 0c-17.6 0-32-14.4-32-32v-96c0-52.8 43.2-96 96-96h96c17.6 0 32 14.4 32 32s-14.4 32-32 32h-96c-17.6 0-32 14.4-32 32v96c0 17.6-14.4 32-32 32z m544 448H352c-52.8 0-96-43.2-96-96V352c0-52.8 43.2-96 96-96h320c52.8 0 96 43.2 96 96v320c0 52.8-43.2 96-96 96zM352 320c-17.6 0-32 14.4-32 32v320c0 17.6 14.4 32 32 32h320c17.6 0 32-14.4 32-32V352c0-17.6-14.4-32-32-32H352z"
+            fill="currentColor"
+          />
+        </svg>
       </button>
     </div>
   </div>
 </template>
-
-<style lang="sass">
-:root
-  --vp-icon-zoom: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0yODggOTI4aC05NmMtNTIuOCAwLTk2LTQzLjItOTYtOTZ2LTk2YzAtMTcuNiAxNC40LTMyIDMyLTMyczMyIDE0LjQgMzIgMzJ2OTZjMCAxNy42IDE0LjQgMzIgMzIgMzJoOTZjMTcuNiAwIDMyIDE0LjQgMzIgMzJzLTE0LjQgMzItMzIgMzJ6IG01NDQgMGgtOTZjLTE3LjYgMC0zMi0xNC40LTMyLTMyczE0LjQtMzIgMzItMzJoOTZjMTcuNiAwIDMyLTE0LjQgMzItMzJ2LTk2YzAtMTcuNiAxNC40LTMyIDMyLTMyczMyIDE0LjQgMzIgMzJ2OTZjMCA1Mi44LTQzLjIgOTYtOTYgOTZ6IG02NC02MDhjLTE3LjYgMC0zMi0xNC40LTMyLTMydi05NmMwLTE3LjYtMTQuNC0zMi0zMi0zMmgtOTZjLTE3LjYgMC0zMi0xNC40LTMyLTMyczE0LjQtMzIgMzItMzJoOTZjNTIuOCAwIDk2IDQzLjIgOTYgOTZ2OTZjMCAxNy42LTE0LjQgMzItMzIgMzJ6IG0tNzY4IDBjLTE3LjYgMC0zMi0xNC40LTMyLTMydi05NmMwLTUyLjggNDMuMi05NiA5Ni05Nmg5NmMxNy42IDAgMzIgMTQuNCAzMiAzMnMtMTQuNCAzMi0zMiAzMmgtOTZjLTE3LjYgMC0zMiAxNC40LTMyIDMydjk2YzAgMTcuNi0xNC40IDMyLTMyIDMyeiBtNTQ0IDQ0OEgzNTJjLTUyLjggMC05Ni00My4yLTk2LTk2VjM1MmMwLTUyLjggNDMuMi05NiA5Ni05NmgzMjBjNTIuOCAwIDk2IDQzLjIgOTYgOTZ2MzIwYzAgNTIuOC00My4yIDk2LTk2IDk2ek0zNTIgMzIwYy0xNy42IDAtMzIgMTQuNC0zMiAzMnYzMjBjMCAxNy42IDE0LjQgMzIgMzIgMzJoMzIwYzE3LjYgMCAzMi0xNC40IDMyLTMyVjM1MmMwLTE3LjYtMTQuNC0zMi0zMi0zMkgzNTJ6Ii8+Cjwvc3ZnPgo=')
-</style>
 
 <style lang="sass" scoped>
 .vp-quasar-repl
@@ -62,9 +62,10 @@ const zoomed = ref(false);
     position: relative
     flex: 1 1 auto
     margin-inline: -24px
+    overflow: auto
+    overscroll-behavior: contain
 
     iframe
-      overflow: auto
       width: 100%
       height: 100%
       outline: none
@@ -88,6 +89,7 @@ const zoomed = ref(false);
         margin-inline: -256px -512px
 
 .vp-quasar-repl__zoom
+  display: none
   position: absolute
   padding: 0
   width: 32px
@@ -95,40 +97,37 @@ const zoomed = ref(false);
   inset: auto 4px 4px auto
   border-radius: 4px
   border: 1px solif var(--vp-button-alt-border)
-  background-color: var(--vp-button-alt-bg)
   z-index: var(--vp-z-index-sidebar)
+  background-color: var(--vp-button-alt-bg)
+  color: var(--vp-button-alt-text)
 
-  > div
+  @media (min-width: 1280px)
+    display: block
+
+  > svg
     position: absolute
     inset: 2px
-    mask: var(--vp-icon-zoom) no-repeat 100% 100%
-    mask-size: cover
-    background-color: var(--vp-button-alt-text)
+    pointer-events: none
 
   &:hover
     border: 1px solif var(--vp-button-alt-hover-border)
+    color: var(--vp-button-alt-hover-text)
     background-color: var(--vp-button-alt-hover-bg)
-    > div
-      background-color: var(--vp-button-alt-hover-text)
 
   &:active
     border: 1px solif var(--vp-button-alt-active-border)
+    color: var(--vp-button-alt-active-text)
     background-color: var(--vp-button-alt-active-bg)
-    > div
-      background-color: var(--vp-button-alt-active-text)
 
   &--active
+    color: var(--vp-button-brand-text)
     background-color: var(--vp-button-brand-bg)
-    > div
-      background-color: var(--vp-button-brand-text)
 
     &:hover
+      color: var(--vp-button-brand-hover-text)
       background-color: var(--vp-button-brand-hover-bg)
-      > div
-        background-color: var(--vp-button-brand-hover-text)
 
     &:active
+      color: var(--vp-button-brand-active-text)
       background-color: var(--vp-button-brand-active-bg)
-      > div
-      background-color: var(--vp-button-brand-active-text)
 </style>
