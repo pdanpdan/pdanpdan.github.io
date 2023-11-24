@@ -78,12 +78,12 @@ const zoomed = ref(false);
   &--zoomed
     @media (min-width: 1280px)
       aspect-ratio: 9/18
-      max-height: 98dvh
+      max-height: calc(98dvh - var(--vp-nav-height) - var(--vp-layout-top-height, 0px) - var(--vp-doc-top-height, 0px))
 
     > .vp-quasar-repl__container
       @media (min-width: 1280px)
         margin-inline: -128px -384px
-        z-index: var(--vp-z-index-sidebar)
+        z-index: 1
 
       @media (min-width: 1600px)
         margin-inline: -256px -512px
@@ -97,7 +97,7 @@ const zoomed = ref(false);
   inset: auto 4px 4px auto
   border-radius: 4px
   border: 1px solif var(--vp-button-alt-border)
-  z-index: var(--vp-z-index-sidebar)
+  z-index: 1
   background-color: var(--vp-button-alt-bg)
   color: var(--vp-button-alt-text)
 
