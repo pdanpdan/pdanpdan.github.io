@@ -4,6 +4,7 @@ description: A Vue composable for simplifying the usage of QSelect with filterin
 date: 2023-11-21
 tags: [quasar, javascript, typescript]
 outline: deep
+featured: true
 ---
 
 <script setup>
