@@ -50,13 +50,13 @@ const zoomed = ref(false);
   display: flex
   flex-direction: column
   aspect-ratio: 5/4.5
-  max-height: 110dvh
+  max-height: 110svh
   width: 100%
   margin-block-start: 24px
 
   @media (orientation: portrait)
     aspect-ratio: 9/18
-    max-height: 90dvh
+    max-height: 90svh
 
   > .vp-quasar-repl__container
     position: relative
@@ -78,7 +78,7 @@ const zoomed = ref(false);
   &--zoomed
     @media (min-width: 1280px)
       aspect-ratio: 9/18
-      max-height: calc(98dvh - var(--vp-nav-height) - var(--vp-layout-top-height, 0px) - var(--vp-doc-top-height, 0px))
+      max-height: calc(98svh - var(--vp-nav-height) - var(--vp-layout-top-height, 0px) - var(--vp-doc-top-height, 0px))
 
     > .vp-quasar-repl__container
       @media (min-width: 1280px)
