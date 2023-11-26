@@ -72,6 +72,10 @@ export default defineConfig({
 
   sitemap: {
     hostname: 'https://pdanpdan.github.io/',
+    transformItems: (items) => items.map((item) => ({
+      changefreq: 'daily',
+      ...item,
+    })),
   },
 
   lastUpdated: true,
