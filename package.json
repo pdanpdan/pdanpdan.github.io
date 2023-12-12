@@ -7,19 +7,19 @@
     "lint": "eslint --ext .js,.vue,.md ./"
   },
   "dependencies": {
-    "@vueuse/core": "^10.6.1",
-    "vue": "^3.3.9"
+    "@vueuse/core": "^10.7.0",
+    "vue": "^3.3.11"
   },
   "devDependencies": {
-    "@vue/eslint-config-airbnb": "^7.0.0",
-    "eslint": "^8.54.0",
+    "@vue/eslint-config-airbnb": "^7.0.1",
+    "eslint": "^8.55.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-markdown": "^3.0.1",
-    "eslint-plugin-vue": "^9.18.1",
-    "postcss": "^8.4.31",
+    "eslint-plugin-vue": "^9.19.2",
+    "postcss": "^8.4.32",
     "sass": "^1.69.5",
-    "vite-plugin-vitepress-demo": "^2.2.0",
+    "vite-plugin-vitepress-demo": "^2.2.1",
     "vitepress": "1.0.0-rc.31"
   },
   "pnpm": {
