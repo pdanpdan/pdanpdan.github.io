@@ -5,7 +5,7 @@
         v-for="tag in tags.names"
         :key="tag"
         type="button"
-        :class="{ selected: tagsStatus[tag] }"
+        :class="{ selected: tagsStatus[tag] === true }"
         @click="tagsStatus[tag] = tagsStatus[tag] !== true"
         @dblclick="(ev) => tagOnly(tag, ev)"
       >
@@ -94,7 +94,7 @@
 </style>
 
 <script setup>
-import { computed, unref } from 'vue';
+import { computed, ref, unref, onMounted } from 'vue';
 import { toReactive, useLocalStorage } from '@vueuse/core';
 
 import PostCard from 'components/PostCard.vue';
@@ -106,11 +106,8 @@ const props = defineProps({
 });
 
 const { posts, featured: featuredPosts, tags } = data;
-const tagsStatus = toReactive(useLocalStorage(
-  'post-tags-status',
-  tags.status,
-  { mergeDefaults: true },
-));
+const refTagsStatus = ref(tags.status);
+const tagsStatus = toReactive(refTagsStatus);
 const filteredPosts = computed(() => {
   if (props.featured === true) {
     return featuredPosts;
@@ -148,4 +145,12 @@ function tagOnly(tag, ev) {
     ev.preventDefault();
   }
 }
+
+onMounted(() => {
+  refTagsStatus.value = toReactive(useLocalStorage(
+    'post-tags-status',
+    tags.status,
+    { mergeDefaults: true },
+  ));
+})
 </script>
