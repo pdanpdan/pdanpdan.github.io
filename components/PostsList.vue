@@ -94,7 +94,12 @@
 </style>
 
 <script setup>
-import { computed, ref, unref, onMounted } from 'vue';
+import {
+  computed,
+  ref,
+  unref,
+  onMounted,
+} from 'vue';
 import { toReactive, useLocalStorage } from '@vueuse/core';
 
 import PostCard from 'components/PostCard.vue';
@@ -152,5 +157,5 @@ onMounted(() => {
     tags.status,
     { mergeDefaults: true },
   ));
-})
+});
 </script>

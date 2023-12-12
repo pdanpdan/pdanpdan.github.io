@@ -102,5 +102,8 @@ export default defineConfig({
         theme: resolve(__dirname, './theme'),
       },
     },
+    build: {
+      chunkSizeWarningLimit: 600 * 1024 * 1024,
+    },
   },
 });
