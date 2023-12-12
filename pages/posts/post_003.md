@@ -1,8 +1,8 @@
 ---
 title: Generic composable function for Quasar QSelect with filtering
 description: A Vue composable for simplifying the usage of QSelect with filtering in Quasar.
-date: 2023-11-21
-tags: [quasar, javascript, typescript]
+date: 2023-12-12
+tags: [quasar, javascript, typescript, composable]
 outline: deep
 featured: true
 ---
@@ -62,10 +62,17 @@ The search function generator `createMappedFilterFn` gets a configuration object
 
 ::: code-group
 ```ts [useFilteredSelect.ts]
-import { shallowRef, ref, unref, reactive, type MaybeRef, type ShallowRef, type Ref } from 'vue';
+import { shallowRef, ref, unref, reactive } from 'vue';
+import type { MaybeRef, ShallowRef } from 'vue';
 import type { QSelect, QSelectProps } from 'quasar';
 
 type MaybePromise<T> = T | Promise<T> | PromiseLike<T>;
+
+interface UseProps extends Partial<Omit<QSelectProps, 'loading' | 'onFilter' | 'options'>> {
+  options: ShallowRef<QSelectProps[ 'options' ]>;
+  onFilter: QSelectProps[ 'onFilter' ];
+  loading?: MaybeRef<boolean>;
+}
 
 export function createMappedFilterFn(config?: {
   key?: string | null;
@@ -94,20 +101,20 @@ export function createMappedFilterFn(config?: {
 export const stringFilterFn = createMappedFilterFn();
 export const noFilterFn = <T>(_: unknown, items: T[]) => items;
 
-export function useFilteredSelect<T, K extends keyof QSelectProps>(
+export function useFilteredSelect<T>(
   optionsOrFn:
     | MaybeRef<T[]>
     | ((search: string) => MaybePromise<MaybeRef<T[]>>),
   filterFn: (search: string, list: T[]) => T[] = stringFilterFn,
-  props?: Pick<QSelectProps, K>,
+  props?: Partial<QSelectProps>,
   afterFn?: (ref: QSelect) => void,
 ) {
   const getOptions = typeof optionsOrFn === 'function' ? optionsOrFn : () => optionsOrFn;
-  const filteredOpts = shallowRef(typeof optionsOrFn === 'function' ? [] : optionsOrFn);
+  const filteredOpts = shallowRef(typeof optionsOrFn === 'function' ? [] : unref(optionsOrFn));
   const loading = ref(false);
-  const keepOpen = props && props['loading'] === true;
+  const keepOpen = props && props.loading && unref(props.loading) === true;
 
-  const useProps: Pick<QSelectProps, K> & { options: ShallowRef<QSelectProps[ 'options' ]>, onFilter: QSelectProps[ 'onFilter' ], loading?: Ref<boolean>; } = {
+  const useProps: UseProps = {
     ...props,
     options: filteredOpts,
     onFilter(
@@ -207,6 +214,18 @@ export function useFilteredSelect<T, K extends keyof QSelectProps>(
           </q-item>
         </template>
       </q-select>
+
+      <q-select
+        v-model="model6"
+        label="Ref string filter"
+        v-bind="filteredSelectProps6"
+      >
+        <template #no-option>
+          <q-item>
+            <q-item-section class="text-grey"> No results </q-item-section>
+          </q-item>
+        </template>
+      </q-select>
     </div>
   </div>
 </template>
@@ -223,7 +242,7 @@ const stringOptions = [
     acc.push(`${name} - ${i}`);
   }
   return acc;
-}, []);
+}, [] as string[]);
 
 const objOptions = [
   { label: 'Google', value: 1 },
@@ -236,7 +255,7 @@ const objOptions = [
     acc.push({ label: `${label} - ${i}`, value: `${value}#${i}` });
   }
   return acc;
-}, []);
+}, [] as Array<{ label: string, value: string }>);
 </script>
 
 <script setup lang="ts">
@@ -247,6 +266,8 @@ import {
   stringFilterFn,
   noFilterFn,
 } from './useFilteredSelect';
+
+const refOptions = ref(stringOptions);
 
 const filteredSelectProps1 = useFilteredSelect(
   stringOptions,
@@ -310,19 +331,32 @@ const filteredSelectProps5 = useFilteredSelect(
   noFilterFn,
   { outlined: true, useInput: true, inputDebounce: 0, behavior: 'menu' },
 );
+const filteredSelectProps6 = useFilteredSelect(
+  refOptions,
+  undefined /* same as stringFunctionFn */,
+  { outlined: true, useInput: true, inputDebounce: 0, behavior: 'menu' },
+);
 
 const model1 = ref(null);
 const model2 = ref(null);
 const model3 = ref(null);
 const model4 = ref(null);
 const model5 = ref(null);
+const model6 = ref(null);
 </script>
 ```
 :::
+
+## Changelog
+
+### 2023-12-12
+
+- fix usage with options passed as ref [#16613](https://github.com/quasarframework/quasar/discussions/16613#discussioncomment-7819058)
+- fix TS typing issues [#16613](https://github.com/quasarframework/quasar/discussions/16613#discussioncomment-7818424)
 
 ## Demo
 
 <code-frame
   :title="$frontmatter.title"
-  src="https://pdanpdan.github.io/quasar-play/?file=src%2FuseFilteredSelect.ts&preview=t&previewMode=preview&editor=codemirror#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"
+  src="https://pdanpdan.github.io/quasar-play/?file=src%2FuseFilteredSelect.ts&preview=t&previewMode=preview&editor=codemirror#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"
 />
