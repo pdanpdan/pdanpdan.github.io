@@ -137,7 +137,6 @@ function tagOnly(tag, ev) {
       tag,
       state: Object.entries(unref(tagsStatus)),
     };
-    console.log(tagOnlyState);
 
     Object.keys(tagsStatus).forEach((t) => {
       tagsStatus[t] = t === tag;
