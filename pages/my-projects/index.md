@@ -6,6 +6,51 @@ outline: [2, 3]
 
 # My Projects
 
+## Virtual Scroll {.title--big}
+
+A high-performance, dependency-free virtual scrolling library for Vue 3. Renders only the visible items and handles massive or dynamically sized lists by scaling coordinates beyond the browser scroll limits.
+
+* [Code](https://github.com/pdanpdan/virtual-scroll)
+* [Documentation & Examples](https://pdanpdan.github.io/virtual-scroll/)
+* [Package](https://www.npmjs.com/package/@pdanpdan/virtual-scroll)
+
+## Headless Combobox {.title--big}
+
+An accessible, renderless combobox for Vue 3 with filtering and keyboard navigation, part of the headless-components monorepo.
+
+* [Code](https://github.com/pdanpdan/headless-components)
+* [Documentation & Examples](https://pdanpdan.github.io/headless-components/)
+* [Package](https://www.npmjs.com/package/@pdanpdan/headless-combobox)
+
+## Vue Keyboard Trap {.title--big}
+
+A Vue 3 and Vue 2 directive for keyboard navigation / TAB trapping - roving movement and trapping inside container that can greatly improve a11y in your applications.
+
+* [Code](https://github.com/pdanpdan/vue-keyboard-trap)
+* [Documentation](https://pdanpdan.github.io/vue-keyboard-trap/)
+* [Package](https://www.npmjs.com/package/@pdanpdan/vue-keyboard-trap)
+* [Demo CodePen](https://codepen.io/pdanpdan/pen/MWrzLdM)
+
+## Gerrymandle Solver {.title--big}
+
+Solves the daily puzzles from [gerrymandle.com](https://gerrymandle.com): given the day's hex board, it finds a district map that wins the election for the target party. Runs entirely in your browser.
+
+* [Code](https://github.com/pdanpdan/gerrymandle)
+* [Online Solver](https://pdanpdan.github.io/gerrymandle-solver/)
+
+## Wordle Solver {.title--big}
+
+A solver / helper for the Wordle game. Can be used as `solver` or as `game`, in both `easy` and `hard` modes.
+
+* [Code](https://github.com/pdanpdan/wordle-solver)
+* [Online Solver](https://pdanpdan.github.io/wordle-solver/)
+
+## SSL Certificate Manager {.title--big}
+
+A desktop / electron application to inspect and validate SSL certificates.
+
+* [Code](https://github.com/pdanpdan/ssl-certificate-manager)
+
 ## Quasar v1 (Vue 2) {.title--big}
 
 Quasar is a Vue based components framework that also provide an easy way to build cross-target applications (web, mobile - cordova/capacitor, desktop - electron).
@@ -69,24 +114,3 @@ Now you have no excuse for not providing a repro in case you have issus :D
 
 * [Code](https://github.com/pdanpdan/quasar-play)
 * [Demo Online](https://pdanpdan.github.io/quasar-play/)
-
-## Vue Keyboard Trap {.title--big}
-
-A Vue 3 and Vue 2 directive for keyboard navigation / TAB trapping - roving movement and trapping inside container that can greatly improve a11y in your applications.
-
-* [Code](https://github.com/pdanpdan/vue-keyboard-trap)
-* [Documentation](https://pdanpdan.github.io/vue-keyboard-trap/)
-* [Demo CodePen](https://codepen.io/pdanpdan/pen/MWrzLdM)
-
-## Wordle Solver {.title--big}
-
-A solver / helper for the Wordle game. Can be used as `solver` or as `game`, in both `easy` and `hard` modes.
-
-* [Code](https://github.com/pdanpdan/wordle-solver)
-* [Online Solver](https://pdanpdan.github.io/wordle-solver/)
-
-## SSL Certificate Manager {.title--big}
-
-A desktop / electron application to inspect and validate SSL certificates.
-
-* [Code](https://github.com/pdanpdan/ssl-certificate-manager)

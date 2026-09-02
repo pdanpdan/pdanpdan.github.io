@@ -1,2 +1,7 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://pdanpdan.github.io/sitemap.xml
+Sitemap: https://pdanpdan.github.io/virtual-scroll/sitemap.xml
+Sitemap: https://pdanpdan.github.io/headless-components/sitemap.xml
+Sitemap: https://pdanpdan.github.io/vue-keyboard-trap/sitemap.xml
