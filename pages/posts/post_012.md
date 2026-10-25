@@ -3,6 +3,7 @@ title: A headless combobox for Vue 3
 description: Notes from building a renderless combobox with one state machine, ARIA prop bags, keyboard handling, and native popover positioning.
 date: 2026-10-25
 tags: [vue, javascript, typescript, a11y]
+featured: true
 outline: deep
 ---
 

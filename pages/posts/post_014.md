@@ -3,6 +3,7 @@ title: Rendering Mermaid diagrams in VS Code without Mermaid.js
 description: How the extension renders .mmd files and fenced mermaid blocks with Pele, and why the Markdown path needs two phases.
 date: 2026-10-25
 tags: [vscode, mermaid, typescript, markdown]
+featured: true
 outline: deep
 ---
 

@@ -3,6 +3,7 @@ title: Virtual scrolling past the browser scroll limit
 description: How the library maps a 10-million-pixel scroll range onto virtual coordinates, and why wheel and pointer input need their own handling.
 date: 2026-10-25
 tags: [vue, performance, javascript, typescript]
+featured: true
 outline: deep
 ---
 
