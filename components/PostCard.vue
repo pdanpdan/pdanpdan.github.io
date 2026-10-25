@@ -47,7 +47,11 @@ import { withBase } from 'vitepress';
 
 import ScriptTag from 'components/ScriptTag.vue';
 
-const images = import.meta.glob('pages/posts/*.{jpg,png}', { eager: true, as: 'url' });
+const images = import.meta.glob('pages/posts/*.{jpg,png}', {
+  eager: true,
+  import: 'default',
+  query: '?url',
+});
 
 export default {
   props: {

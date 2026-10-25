@@ -4,31 +4,25 @@
     "dev": "vitepress dev --host",
     "build": "vitepress build",
     "preview": "vitepress preview",
-    "lint": "eslint --ext .js,.vue,.md ./"
+    "lint": "eslint ."
   },
   "dependencies": {
-    "@vueuse/core": "^10.7.1",
-    "vue": "^3.4.3"
+    "@vueuse/core": "catalog:",
+    "vue": "catalog:"
   },
   "devDependencies": {
-    "@vue/eslint-config-airbnb": "^8.0.0",
-    "eslint": "^8.56.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-markdown": "^3.0.1",
-    "eslint-plugin-vue": "^9.19.2",
-    "postcss": "^8.4.32",
-    "sass": "^1.69.6",
-    "vite-plugin-vitepress-demo": "^2.2.1",
-    "vitepress": "1.0.0-rc.34"
+    "@eslint/js": "catalog:",
+    "@stylistic/eslint-plugin": "catalog:",
+    "eslint": "catalog:",
+    "eslint-plugin-vue": "catalog:",
+    "globals": "catalog:",
+    "postcss": "catalog:",
+    "sass": "catalog:",
+    "vite-plugin-vitepress-demo": "catalog:",
+    "vitepress": "catalog:"
   },
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "@algolia/client-search",
-        "search-insights"
-      ]
-    }
+  "engines": {
+    "node": ">=20.19.0"
   },
-  "packageManager": "pnpm@8.9.0"
+  "packageManager": "pnpm@12.15.0"
 }

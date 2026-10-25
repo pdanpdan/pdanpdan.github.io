@@ -86,6 +86,12 @@ export default defineConfig({
 
   vite: {
     publicDir: '../public',
+    css: {
+      preprocessorOptions: {
+        sass: { api: 'modern-compiler' },
+        scss: { api: 'modern-compiler' },
+      },
+    },
     plugins: [
       VitePluginVitepressDemo({
         glob: [

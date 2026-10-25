@@ -21,7 +21,7 @@ async function copyExecCommand(text) {
   selection.removeAllRanges();
   range.selectNode(span);
   selection.addRange(range);
-  let success = false;
+  let success;
   try {
     success = window.document.execCommand('copy');
   } finally {

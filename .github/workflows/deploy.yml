@@ -32,11 +32,11 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0 # Not needed if lastUpdated is not enabled
-      - uses: pnpm/action-setup@v2 # installs pnpm@8.9.0 from packageManager
+      - uses: pnpm/action-setup@v4 # installs pnpm@12 from packageManager
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 24
           cache: pnpm
       - name: Setup Pages
         uses: actions/configure-pages@v6

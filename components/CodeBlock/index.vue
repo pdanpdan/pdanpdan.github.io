@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import { computed, onMounted, shallowRef } from 'vue';
 
 import siteDemos from '@siteDemo';
@@ -12,20 +12,18 @@ import FileCopyIcon from './icons/FileCopyIcon.vue';
 import FileSuccessIcon from './icons/FileSuccessIcon.vue';
 import PlaygroundIcon from './icons/PlaygroundIcon.vue';
 
-const props = defineProps<{
-  src: string;
-  title?: string;
-  desc?: string;
-  raw?: boolean;
-  importMap?: Record<string, string>;
-}>();
+const props = defineProps({
+  src: { type: String, required: true },
+  title: { type: String, default: undefined },
+  desc: { type: String, default: undefined },
+  raw: { type: Boolean, default: false },
+  importMap: { type: Object, default: undefined },
+});
 
 const siteDemoData = shallowRef( siteDemos );
 
-// @ts-expect-error this is hot
 if (import.meta.hot) {
-  // @ts-expect-error this is hot
-  import.meta.hot.accept( '/@siteDemo', ( m: any ) => {
+  import.meta.hot.accept( '/@siteDemo', ( m ) => {
     siteDemoData.value = m.default;
   } );
 }
@@ -57,17 +55,19 @@ const sfcBaseUrl = 'https://sfc.vuejs.org/';
 const sfcPlaygroundUrl = computed(() => {
   const sfcJson = {
     'App.vue': playground.value,
-  } as Record<string, string>;
+  };
 
   if (props.importMap) {
     try {
       sfcJson['import-map.json'] = JSON.stringify({
         imports: props.importMap,
       });
-    } catch {}
+    } catch {
+      // Ignore import maps that cannot be stringified.
+    }
   }
 
-  return `${sfcBaseUrl}#${btoa(unescape(encodeURIComponent(JSON.stringify(sfcJson))))}`;
+  return `${ sfcBaseUrl }#${ btoa(unescape(encodeURIComponent(JSON.stringify(sfcJson)))) }`;
 });
 </script>
 
@@ -111,7 +111,12 @@ const sfcPlaygroundUrl = computed(() => {
       <component :is="demo" />
     </section>
 
-    <section v-if="render" v-show="expand" class="demo-block__code" v-html="render" />
+    <section
+      v-if="render"
+      v-show="expand"
+      class="demo-block__code"
+      v-html="render"
+    />
   </article>
 
   <div v-else-if="render" v-html="render" />

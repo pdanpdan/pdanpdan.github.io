@@ -28,8 +28,7 @@ export const useSiteDemos = (props, siteDemosData) => {
 
     const len = source.length;
     let posStart = 0;
-    let posEnd = len;
-    posEnd = source.indexOf('<style', posStart);
+    let posEnd = source.indexOf('<style', posStart);
     while (posEnd > -1 && posEnd < len) {
       converted.push(source.slice(posStart, posEnd));
       posStart = posEnd;
@@ -42,7 +41,7 @@ export const useSiteDemos = (props, siteDemosData) => {
         try {
           const { css } = compileString(match[4], { syntax: match[2].toLowerCase() === 'sass' ? 'indented' : 'scss' });
           converted.push(`${ match[1] }${ match[3] }\n${ css }\n</style>`);
-        } catch (e) {
+        } catch {
           converted.push(style);
         }
       } else {

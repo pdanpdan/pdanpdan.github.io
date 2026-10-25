@@ -26,7 +26,7 @@ function getImagePath(url) {
   return url.split('.').slice(0, -1).join('.');
 }
 
-export default createContentLoader('pages/posts/*.md', {
+export default createContentLoader('posts/*.md', {
   transform(raw) {
     const tagStats = {};
 
