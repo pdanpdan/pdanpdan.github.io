@@ -22,6 +22,13 @@ An accessible, renderless combobox for Vue 3 with filtering and keyboard navigat
 * [Documentation & Examples](https://pdanpdan.github.io/headless-components/)
 * [Package](https://www.npmjs.com/package/@pdanpdan/headless-combobox)
 
+## Mermaid Pele Preview {.title--big}
+
+A VS Code extension that renders Mermaid diagrams with Pele instead of Mermaid.js. `.mmd` and `.mermaid` files open in a preview editor, fenced `mermaid` blocks render in the Markdown preview, and diagrams can be saved as SVG. Math labels are typeset with Temml. Themes and icon packs are configurable.
+
+* [Code](https://github.com/pdanpdan/mermaid-pele-preview)
+* [Marketplace](https://marketplace.visualstudio.com/items?itemName=pdanpdan.mermaid-pele-preview)
+
 ## Vue Keyboard Trap {.title--big}
 
 A Vue 3 and Vue 2 directive for keyboard navigation / TAB trapping - roving movement and trapping inside container that can greatly improve a11y in your applications.
