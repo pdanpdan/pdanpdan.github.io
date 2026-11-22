@@ -71,6 +71,12 @@ export const useSiteDemos = (props, siteDemosData) => {
   });
 
   return {
-    demoData, demo, render, code, block, content, playground,
+    demoData,
+    demo,
+    render,
+    code,
+    block,
+    content,
+    playground,
   };
 };

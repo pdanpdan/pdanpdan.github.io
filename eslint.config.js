@@ -27,7 +27,9 @@ export default [
       sourceType: 'module',
     },
     rules: {
-      '@stylistic/array-bracket-spacing': ['error', 'never'],
+      '@stylistic/list-style': ['error', {
+        overrides: { '()': 'off' },
+      }],
       '@stylistic/arrow-parens': ['error', 'always'],
       '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: true }],
       '@stylistic/comma-dangle': ['error', 'always-multiline'],
@@ -36,7 +38,6 @@ export default [
       '@stylistic/key-spacing': ['error', { afterColon: true, beforeColon: false }],
       '@stylistic/keyword-spacing': 'error',
       '@stylistic/no-multi-spaces': 'error',
-      '@stylistic/object-curly-spacing': ['error', 'always'],
       '@stylistic/quotes': ['error', 'single', { avoidEscape: true }],
       '@stylistic/semi': ['error', 'always'],
       '@stylistic/space-before-blocks': 'error',
