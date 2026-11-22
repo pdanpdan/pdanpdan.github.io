@@ -16,11 +16,11 @@ A high-performance, dependency-free virtual scrolling library for Vue 3. Renders
 
 ## Headless Combobox {.title--big}
 
-An accessible, renderless combobox for Vue 3 with filtering and keyboard navigation, part of the headless-components monorepo.
+An accessible, renderless combobox with filtering, validation, and keyboard navigation. One framework-independent state machine with adapters for Vue 3, React, Svelte, Solid, and Angular. No styles, no runtime dependencies.
 
 * [Code](https://github.com/pdanpdan/headless-components)
-* [Documentation & Examples](https://pdanpdan.github.io/headless-components/)
-* [Package](https://www.npmjs.com/package/@pdanpdan/headless-combobox)
+* [Documentation & Examples](https://pdanpdan.github.io/headless-components/combobox/)
+* Packages: [Vue](https://www.npmjs.com/package/@pdanpdan/headless-combobox-vue) · [React](https://www.npmjs.com/package/@pdanpdan/headless-combobox-react) · [Svelte](https://www.npmjs.com/package/@pdanpdan/headless-combobox-svelte) · [Solid](https://www.npmjs.com/package/@pdanpdan/headless-combobox-solid) · [Angular](https://www.npmjs.com/package/@pdanpdan/headless-combobox-angular) · [Core](https://www.npmjs.com/package/@pdanpdan/headless-combobox-core)
 
 ## Mermaid Pele Preview {.title--big}
 

@@ -1,0 +1,16 @@
+# PDan Blog
+
+> Notes on web development by PDan: Vue, JavaScript/TypeScript, HTML/CSS, and backend topics.
+
+## LLM reference files
+
+- [Headless Combobox](https://pdanpdan.github.io/headless-components/combobox-llm.md): Reference for `@pdanpdan/headless-combobox-core`, `-vue`, `-react`, `-svelte`, `-solid`, and `-angular`. Install commands, complete examples, props, validation, keyboard behavior, and positioning.
+- [Virtual Scroll](https://pdanpdan.github.io/virtual-scroll/llms.txt): Reference for `@pdanpdan/virtual-scroll` and `VirtualScrollMasonry` on Vue 3. Props, exposed methods, patterns, CSS variables, and coordinate scaling.
+
+## Optional
+
+- [Headless Components](https://pdanpdan.github.io/headless-components/): Framework-independent headless UI state machines with adapters for Vue, React, Svelte, Solid, and Angular.
+- [Virtual Scroll documentation](https://pdanpdan.github.io/virtual-scroll/): Virtual scrolling for Vue 3 that renders only the visible items.
+- [My Projects](https://pdanpdan.github.io/my-projects/)
+- [Blog Posts](https://pdanpdan.github.io/posts/)
+- [About](https://pdanpdan.github.io/about/)
